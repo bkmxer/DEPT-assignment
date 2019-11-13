@@ -5,10 +5,10 @@
 # Table of Contents
 1.  [Intro](#markdown-header-intro)
 2.  [Install](#markdown-header-install)
-2.  [Assignment](#markdown-header-assignment)
+3.  [Assignment](#markdown-header-assignment)
+4.  [Design](#markdown-header-design)
+5.  [Screencast](#markdown-header-screencast)
 ------
-
-![Design](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/2-form.png)
 
 # Intro #
 Welcome to the readme of the Dept Frontend Setup Assignment.
@@ -58,8 +58,18 @@ The feature has the following requirements:
 ![Gif of flow](https://media.giphy.com/media/ehPAyJ9h7OeXxbO0q6/giphy.gif)
 
 
-# Design (Screencast) #
+# Design #
 
+![Design-1](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/1-modal-open.png)
+
+![Design-2](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/2-form.png)
+
+![Design-3](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/3-error-message.png)
+
+![Design-4](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/4-success-toast.png)
+
+
+# Screencast #
 - [Screencast of finished assignment: Happy flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/newsletter-form-success-final.mov)
 - [Screencast of finished assignment: Error flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/newsletter-form-error-final.mov)
 ------
