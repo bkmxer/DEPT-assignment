@@ -8,7 +8,7 @@
 2.  [Assignment](#markdown-header-assignment)
 ------
 
-![Design](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/src/master/_design/2-form.png)
+![Design](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/2-form.png)
 
 # Intro #
 Welcome to the readme of the Dept Frontend Setup Assignment.
@@ -60,6 +60,6 @@ The feature has the following requirements:
 
 # Design (Screencast) #
 
-- [Screencast of finished assignment: Happy flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/src/master/_design/newsletter-form-success-final.mov)
-- [Screencast of finished assignment: Error flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/src/master/_design/newsletter-form-error-final.mov)
+- [Screencast of finished assignment: Happy flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/newsletter-form-success-final.mov)
+- [Screencast of finished assignment: Error flow](https://bitbucket.org/tamtam-nl/dtnl-dept-frontend-setup-assignment/raw/ff16604566f5e61c555e1ea0d91fa1c35ddf0585/_design/newsletter-form-error-final.mov)
 ------
