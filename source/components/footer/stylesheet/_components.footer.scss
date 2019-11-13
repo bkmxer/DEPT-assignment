@@ -1,10 +1,20 @@
 .c-footer {
   background-color: $color-black;
   color: $color-white;
-  padding: 100px 0;
+  padding: $global-spacing-lg 0;
+
+  @include screen-mobile-plus-and-bigger {
+    padding: 100px 0;
+  }
 }
 
 .footer__logo {
+  display: none;
+
+  @include screen-tablet-portrait-and-bigger {
+    display: block;
+  }
+
   svg {
     width: 125px;
     height: 46px;
@@ -13,30 +23,50 @@
 
 .footer__left {
   display: flex;
-  align-items: flex-end;
+
+  @include screen-tablet-portrait-and-bigger {
+    align-items: flex-end;
+  }
 }
 
 .footer__right {
   display: flex;
-  align-items: flex-end;
-  height: 100%;
+
+  @include screen-tablet-portrait-and-bigger {
+    align-items: flex-end;
+    height: 100%;
+  }
 }
 
 .footer__menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   list-style: none;
-  margin-left: $global-spacing-lg;
+
+  @include screen-tablet-portrait-and-bigger {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: $global-spacing-lg;
+  }
 }
 
 .footer__menu-item {
   color: $color-white;
   font-weight: $font-weight-bold;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
 
+  @include screen-tablet-portrait-and-bigger {
+    font-size: 2rem;
+  }
+
   ~ .footer__menu-item {
-    margin-left: $global-spacing-sm;
+    margin-top: $global-spacing-xs / 2;
+
+    @include screen-tablet-portrait-and-bigger {
+      margin-left: $global-spacing-sm;
+      margin-top: 0;
+    }
   }
 
   &:hover {
@@ -45,7 +75,12 @@
 }
 
 .footer__socials {
-  margin-left: auto;
+  margin-top: $global-spacing-sm;
+
+  @include screen-mobile-plus-and-bigger {
+    margin-top: 0;
+    margin-left: auto;
+  }
 }
 
 .footer__social-icon {

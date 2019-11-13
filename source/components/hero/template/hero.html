@@ -68,17 +68,18 @@
       ]
   }) }}
 
-  {{ button( {
-    class: 'hero__cta',
-    label: 'Subscribe to newsletter',
-    url: '#',
-    variant: 'secondary',
-    icon: 'chevron-right'
-  } ) }}
+  <div class="o-container">
+    <div class="hero__content">
+      <h1 class="hero__title u-margin-bottom--sm">We are going to create: <br/>A modal with a newsletter form!!</h1>
+      <p class="hero__subtitle">Let's get started!</p>
+    </div>
 
-  <div  class="hero__content">
-    <h1 class="hero__title u-margin-bottom--sm">We are going to create: <br/>A modal with a newsletter form!!</h1>
-    <p class="hero__subtitle">Let's get started!</p>
+    {{ button( {
+      class: 'hero__cta',
+      label: 'Subscribe to newsletter',
+      url: '#',
+      variant: 'secondary',
+      icon: 'chevron-right'
+    } ) }}
   </div>
-
 </div>

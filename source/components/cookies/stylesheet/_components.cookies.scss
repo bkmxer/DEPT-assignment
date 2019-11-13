@@ -3,32 +3,32 @@ $cookie-transition-time: 400ms !default;
 $cookie-transition-ease: $ease-in-out-quad !default;
 
 .c-cookie-bar {
-    position: fixed;
-    z-index: 99;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: $global-spacing*2 0;
-    background-color: rgba($color-black, 0.85);
-    color: $color-white;
-    visibility: hidden;
-    transform: translate3d(0, 100%, 0);
-    transition: $cookie-transition-time $cookie-transition-ease, 0ms $cookie-transition-time;
-    transition-property: transform, visibility;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: $global-spacing * 2 0;
+  background-color: rgba($color-black, 0.85);
+  color: $color-white;
+  visibility: hidden;
+  transform: translate3d(0, 100%, 0);
+  transition: $cookie-transition-time $cookie-transition-ease, 0ms $cookie-transition-time;
+  transition-property: transform, visibility;
 
-    &.cookie-bar--is-visible {
-        visibility: visible;
-        transform: translate3d(0, 0, 0);
-        transition: $cookie-transition-time $cookie-transition-ease, 0ms;
-    }
+  &.cookie-bar--is-visible {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition: $cookie-transition-time $cookie-transition-ease, 0ms;
+  }
 }
 
 .cookie-bar__content {
-    display: flex;
-    align-items: center;
-    margin-right: $global-spacing;
+  display: flex;
+  align-items: center;
+  margin-right: $global-spacing;
 }
 
 .cookie-bar__button-holder {
-    margin-left: auto;
+  margin-left: auto;
 }

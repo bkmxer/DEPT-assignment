@@ -3,6 +3,11 @@
   z-index: 90;
   top: 0;
   width: 100%;
+  background: $color-white;
+
+  @include screen-mobile-plus-and-bigger {
+    background: transparent;
+  }
 }
 
 .header__container {
@@ -13,7 +18,9 @@
 }
 
 .header__logo {
-  color: $color-white;
+  @include screen-mobile-plus-and-bigger {
+    color: $color-white;
+  }
 
   svg {
     width: 87px;
