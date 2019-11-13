@@ -1,0 +1,114 @@
+{#
+    @shelf-version: 1.1.0
+    Video macro
+
+    data {
+        instance_id: 'string',
+        id: 'string',
+        platform: 'string', (youtube or vimeo)
+        title: 'string',
+        description: 'string',
+        noschema: 'boolean', (optional, default true)
+        thumbnail: 'string', (optional)
+        total_time: 'string', (optional)
+        start_time: 'string', (optional)
+        classes: 'string', (optional)
+        muted: integer, (optional, default 1)
+        autoplay: integer, (optional, default 1)
+        playsinline: integer, (optional, default 1)
+        controls: integer, (optional, default 0)
+        info: integer (optional, default 0),
+        sources: object (optional) for native video only
+        closedcaptions: object (optional) for native video only
+        inview: boolean (optional, default true)
+        image: object (optional)
+    }
+#}
+
+{% from 'image.html' import image %}
+{% from 'button.html' import button %}
+
+{% macro video(data) %}
+
+    <div class="c-video
+        {%- if data.classes %} {{ data.classes }}{% endif -%}"
+        {% if data.noschema != false %}itemprop="video" itemscope itemtype="http://schema.org/VideoObject"{% endif %}
+        {% if data.instance_id %}id="video-{{ data.instance_id }}"{% endif %}
+        {% if data.platform %}data-video-platform="{{ data.platform }}"{% endif %}
+        {% if data.id %}data-video-id="{{ data.id }}"{% endif %}
+        {% if data.start_time %}data-video-time="{{ data.start_time }}"{% endif %}
+        {% if data.muted >= 0 %}data-video-muted="{{ data.muted }}"{% endif %}
+        {% if data.autoplay >= 0 %}data-video-autoplay="{{ data.autoplay }}"{% endif %}
+        {% if data.playsinline >= 0 %}data-video-playsinline="{{ data.playsinline }}"{% endif %}
+        {% if data.controls >= 0 %}data-video-controls="{{ data.controls }}"{% endif %}
+        {% if data.loop >= 0 %}data-video-loop="{{ data.loop }}"{% endif %}
+        {% if data.info >= 0 %}data-video-info="{{ data.info }}"{% endif %}
+        {% if data.sources %}data-video-sources="{{ data.sources|dump|escape }}"{% endif %}
+        {% if data.closedcaptions %}data-video-closedcaptions="{{ data.closedcaptions|dump|escape }}"{% endif %}
+        {% if data.title %}aria-label="{{ data.title }}"{% endif %}
+        {% if data.inview != false %}
+            js-hook-inview
+            data-inview-persistent="true"
+            data-inview-trigger="video::inview"
+        {% endif %}
+        role="application"
+        js-hook-video>
+
+        {% if data.noschema != false %}
+            {% if data.title %}<meta itemprop="name" content="{{ data.title }}" />{% endif %}
+            {% if data.description %}<meta itemprop="description" content="{{ data.description }}" />{% endif %}
+            {% if data.totalTime %}<meta itemprop="duration" content="{{ data.totalTime }}" />{% endif %}
+            {% if data.thumbnail %}<meta itemprop="thumbnailUrl" content="{{ data.thumbnail }}" />{% endif %}
+            {% if data.embedUrl %}<meta itemprop="embedURL" content="{{ data.embed_url }}" />{% endif %}
+            {% if data.uploadDate %}<meta itemprop="uploadDate" content="{{ data.uploadDate }}" />{% endif %}
+        {% endif %}
+
+        <div class="video__player" js-hook-video-player></div>
+
+
+        <div class="video__loader"></div>
+
+        {% if data.buttons !== false %}
+            <button class="video__button video__button--play" js-hook-video-play>
+                <span class="video__button-icon"></span>
+                <span class="u-sr-only">Play</span>
+            </button>
+
+            <button class="video__button video__button--pause" js-hook-video-pause>
+                <span class="video__button-icon">&#10073;&#10073;</span>
+                <span class="u-sr-only">Pause</span>
+            </button>
+
+            <button class="video__button video__button--replay" js-hook-video-replay>
+                <span class="video__button-icon">&#8635;</span>
+                <span class="u-sr-only">Replay</span>
+            </button>
+        {% endif %}
+
+        {% if data.image %}
+            {{ image({
+                classes: 'video__image',
+                preload: data.image.preload,
+                image: data.image.image,
+                srcset: data.image.srcset,
+                attr: 'aria-hidden="true"',
+                objectFit: true
+            }) }}
+        {% endif %}
+
+        <div class="video__invalid-cookie">
+            <p>
+                You are seeing this because you have not accepted our advertising cookies.<br>
+                If you want to see our videos, please change your cookie preferences.
+            </p>
+
+            {{ button({
+                url: '/cookie-settings.html',
+                variant: 'primary',
+                label: 'Change preferences'
+            }) }}
+        </div>
+
+    </div>
+
+{% endmacro %}

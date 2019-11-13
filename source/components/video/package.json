@@ -1,0 +1,9 @@
+{
+    "name": "dept-video",
+    "license": "MIT",
+    "repository": "https://bitbucket.org/tamtam-nl/tamtam-frontend-shelf",
+    "dependencies": {
+        "@vimeo/player": "2.6.3",
+        "youtube-player": "5.5.0"
+    }
+}

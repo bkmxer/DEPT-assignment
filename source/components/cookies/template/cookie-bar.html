@@ -1,0 +1,44 @@
+{#
+    @shelf-version: 2.0.0
+    Cookiebar template
+#}
+
+{% from 'button.html' import button %}
+
+<div class="c-cookie-bar" tabindex="-1" aria-label="Cookiebar" js-hook-cookies-bar data-policy-version="1">
+
+    <div class="o-container">
+
+        <div class="cookie-bar__content">
+
+            <div class="cookie-bar__text">
+                Cookie content here
+            </div>
+
+            <div class="cookie-bar__button-holder">
+                {{ button( {
+                    label: 'Change cookie settings',
+                    url: '/cookie-settings.html',
+                    class: 'cookie-bar__button',
+                    size: 'small',
+                    hook: 'cookies-settings-button',
+                    attr: 'tabindex="-1"'
+                } ) }}
+
+                {{ button( {
+                    element: 'button',
+                    type: 'button',
+                    variant: 'primary',
+                    label: 'I agree',
+                    class: 'cookie-bar__button',
+                    attr: 'on:click="cookies::dismiss" tabindex="-1"',
+                    size: 'small',
+                    hook: 'cookies-dismiss'
+                } ) }}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

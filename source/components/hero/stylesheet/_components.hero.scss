@@ -1,0 +1,28 @@
+.c-hero {
+  position: relative;
+}
+
+.hero__content {
+  position: absolute;
+  width: 100%;
+  left: $global-spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  bottom: $global-spacing-lg;
+  z-index: 80;
+  max-width: 50vw;
+}
+
+.hero__cta {
+  position: absolute;
+  right: $global-spacing-lg;
+  bottom: $global-spacing-lg;
+  z-index: 80;
+  color: $color-white;
+}
+
+.hero__title,
+.hero__subtitle {
+  color: $color-white;
+}

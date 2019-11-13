@@ -1,0 +1,230 @@
+// @shelf-version 1.1.0
+$video-background-color: $color-off-white;
+$video-loader-size: 50px;
+$video-loader-thickness: 4px;
+$video-loader-color: $color-primary;
+$video-button-size: 75px;
+$video-button-color: $color-white;
+$video-button-icon-color: $color-primary;
+$video-button-transition-time: 250ms * 2;
+$video-button-transition-ease: $ease-in-quad;
+
+@mixin video-button-show-props {
+  transition: $video-button-transition-time $video-button-transition-ease,
+    $video-button-transition-time $video-button-transition-ease, $video-button-transition-time;
+}
+
+.c-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  background-color: $video-background-color;
+
+  .video__image,
+  .video__player,
+  iframe,
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.video__player {
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 250ms $ease-in-quad;
+  transition-property: opacity, transform;
+
+  .video--is-initialised & {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.video__loader {
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $video-loader-size;
+  height: $video-loader-size;
+  background-color: $video-background-color;
+  box-shadow: inset 0 0 0 $video-loader-thickness $video-loader-color;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  backface-visibility: hidden;
+  z-index: 3;
+  transition: $video-button-transition-time $ease-in-quad;
+  transition-property: opacity;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    width: ($video-loader-size + 2) / 2;
+    height: $video-loader-size + 2;
+    background: $video-background-color;
+    border-radius: ($video-loader-size + 2) 0 0 ($video-loader-size + 2);
+    top: -1px;
+    left: -1px;
+    transform-origin: ($video-loader-size + 2) / 2 ($video-loader-size + 2) / 2;
+    animation: video-loader 1200ms infinite cubic-bezier(0.215, 0.61, 0.355, 1) 900ms;
+  }
+
+  &::after {
+    width: ($video-loader-size + 2) / 2;
+    height: $video-loader-size + 2;
+    background: $video-background-color;
+    border-radius: 0 ($video-loader-size + 1) ($video-loader-size + 1) 0;
+    top: -1px;
+    left: $video-loader-size / 2;
+    transform-origin: 0 ($video-loader-size + 2) / 2;
+    animation: video-loader 1200ms infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .video--has-invalid-cookie &,
+  .video--is-initialised & {
+    opacity: 0;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+.video__invalid-cookie {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: $global-spacing-md;
+  z-index: 10;
+  background-color: $video-background-color;
+
+  .video--has-invalid-cookie & {
+    display: flex;
+  }
+}
+
+@keyframes video-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.video__button {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: $video-button-size;
+  height: $video-button-size;
+  border-radius: $video-button-size;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: $video-button-color;
+  box-shadow: 0 2px 10px 0 rgba($color-black, 0.3);
+  transition: $video-button-transition-time $video-button-transition-ease,
+    $video-button-transition-time $video-button-transition-ease, 0ms $video-button-transition-time;
+  transition-property: box-shadow, opacity, visibility;
+
+  @include hover-focus {
+    box-shadow: 0 0 0 0 rgba($color-black, 0);
+
+    .video__button-icon {
+      color: darken($video-button-icon-color, 20%);
+    }
+  }
+
+  @include keyboard-focus {
+    .video__button-icon {
+      color: darken($video-button-icon-color, 100%);
+    }
+  }
+}
+
+.video__button-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 1px);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 3rem;
+  color: $video-button-icon-color;
+  transition: $video-button-transition-time $video-button-transition-ease;
+  transition-property: color, border;
+}
+
+.video__button--play {
+  .video__button-icon {
+    width: 18px;
+    height: 18px;
+    border-top: 9px solid transparent;
+    border-left: 18px solid $video-button-icon-color;
+    border-right: 0 solid transparent;
+    border-bottom: 9px solid transparent;
+  }
+
+  .video--is-paused & {
+    opacity: 1;
+    visibility: visible;
+    @include video-button-show-props;
+  }
+
+  @include hover-focus {
+    .video__button-icon {
+      border-left-color: darken($video-button-icon-color, 20%);
+    }
+  }
+
+  @include keyboard-focus {
+    .video__button-icon {
+      border-left-color: darken($video-button-icon-color, 100%);
+    }
+  }
+}
+
+.video__button--pause {
+  .video__button-icon {
+    letter-spacing: 2px;
+  }
+
+  .video--is-playing & {
+    visibility: visible;
+    @include video-button-show-props;
+  }
+
+  html:not(.is-touch) .video--is-playing:hover & {
+    opacity: 1;
+  }
+}
+
+.video__button--replay {
+  .video__button-icon {
+    font-weight: $font-weight-bold;
+  }
+
+  .video--is-ended & {
+    opacity: 1;
+    visibility: visible;
+    @include video-button-show-props;
+  }
+}

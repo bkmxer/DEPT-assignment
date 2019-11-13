@@ -1,0 +1,22 @@
+.c-header {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  width: 100%;
+}
+
+.header__container {
+  padding-top: $global-spacing-md;
+  padding-bottom: $global-spacing-sm;
+  border-bottom: 1px solid $color-white;
+  color: $color-black;
+}
+
+.header__logo {
+  color: $color-white;
+
+  svg {
+    width: 87px;
+    height: 23px;
+  }
+}

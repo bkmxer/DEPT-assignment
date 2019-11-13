@@ -1,0 +1,92 @@
+{#
+    @shelf-version: 2.0.0
+    Cookie form template
+#}
+
+
+{% import 'form-elements.html' as form %}
+{% from 'button.html' import button %}
+
+{% call form.form({
+    action: '/cookie-settings.html',
+    hook: 'cookies-form'
+}) %}
+
+    <h1 class="u-margin-bottom--md">Change your cookie preferences</h1>
+
+    <p>
+        This site uses functional and analytic cookies. These cookies are needed to let the site operate to its full potential. In the form below you can manage your preferences.
+    </p>
+
+
+    {% call form.fieldset({
+        legend: 'Change your cookie preferences',
+        sronly: true
+    }) %}
+
+        <h2 class="u-margin-bottom--sm">
+            Change your cookie preferences
+        </h2>
+
+        <div class="u-margin-bottom--sm">
+
+            <p>
+                Place cookie description here.
+            </p>
+
+        </div>
+
+        <div class="u-margin-bottom--sm">
+
+            {{ form.checkbox({
+                name: 'cookies',
+                options: [
+                    {
+                        label: 'Functional: Cookies that make sure the site works properly.',
+                        id: 'functional',
+                        value: 'functional',
+                        checked: true,
+                        disabled: true,
+                        hook: 'cookies-option'
+                    },
+                    {
+                        label: 'Analytics: Cookies which allows us to measure the usage of the site. The collected data will be combined and aggregated to allow us to do static analyses',
+                        id: 'analytics',
+                        value: 'analytics',
+                        checked: true,
+                        disabled: true,
+                        hook: 'cookies-option'
+                    },
+                    {
+                        label: 'Social networks: Cookies that allow us to share the contents of this site on social networks. Social networks profile and track users. By accepting these cookies you allow social networks to track your browsing activity.',
+                        id: 'social',
+                        value: 'social',
+                        hook: 'cookies-option'
+                    },
+                    {
+                        label: 'Advertising: Cookies which allow us to offer you tailored content based on your browsing behavior. By accepting these cookies you allow advertising networks to track your browsing activity.',
+                        id: 'advertising',
+                        value: 'advertising',
+                        hook: 'cookies-option'
+                    },
+                    {
+                        label: 'Other: Cookies which do not apply to the categories above. By accepting these cookies you allow social, advertising or other networks to track your browsing activity.',
+                        id: 'other',
+                        value: 'other',
+                        hook: 'cookies-option'
+                    }
+                ]
+            }) }}
+
+        </div>
+
+        {{ button( {
+            element: 'button',
+            type: 'submit',
+            label: 'Save preferences',
+            hook: 'cookies-form-accept'
+        } ) }}
+
+    {% endcall %}
+
+{% endcall %}

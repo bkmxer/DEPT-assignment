@@ -1,0 +1,84 @@
+{% from 'video.html' import video  %}
+{% from 'button.html' import button %}
+
+<div class="c-hero">
+  {{ video({
+      instance_id: 1,
+      id: '1',
+      platform: 'native',
+      title: 'Dept agency Introduction',
+      description: 'Introduction Video',
+      thumbnail: 'https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-1280x720-c.jpg',
+      controls: 0,
+      playsinline: 1,
+      autoplay: 1,
+      loop: 1,
+      muted: 1,
+      image: {
+          preload: 'https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-480x250-c.jpg',
+          image: 'https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-1280x720-c.jpg',
+          srcset: 'https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-320x250-c.jpg 320w,https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-480x250-c.jpg 480w,https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-730x410-c.jpg 1024w,https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-1024x576-c.jpg 1024w,https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-1280x720-c.jpg 1280w,https://www.deptagency.com/wp-content/uploads/fly-images/114213/Dept_Berlin_Office-19-1440x810-c.jpg 1440w'
+      },
+      sources: [
+          {
+              size : 1920,
+              source: [
+                  {
+                      url: 'https://player.vimeo.com/external/344108443.hd.mp4?s=c1730857e5c3097471ce4d0e05b3bfd287ab561f&profile_id=175',
+                      type: 'video/mp4'
+                  }
+              ]
+          },
+          {
+              size : 1280,
+              source: [
+                  {
+                      url: 'https://player.vimeo.com/external/344108443.hd.mp4?s=c1730857e5c3097471ce4d0e05b3bfd287ab561f&profile_id=175',
+                      type: 'video/mp4'
+                  }
+              ]
+          },
+          {
+              size : 1024,
+              source: [
+                  {
+                      url: 'https://player.vimeo.com/external/344108443.hd.mp4?s=c1730857e5c3097471ce4d0e05b3bfd287ab561f&profile_id=175',
+                      type: 'video/mp4'
+                  }
+              ]
+          },
+          {
+              size : 960,
+              source: [
+                  {
+                      url: 'https://player.vimeo.com/external/344108443.sd.mp4?s=c1730857e5c3097471ce4d0e05b3bfd287ab561f&profile_id=175',
+                      type: 'video/mp4'
+                  }
+              ]
+          },
+          {
+              size : 640,
+              source: [
+                  {
+                      url: 'https://player.vimeo.com/external/344108443.hd.mp4?s=c1730857e5c3097471ce4d0e05b3bfd287ab561f&profile_id=175',
+                      type: 'video/mp4'
+                  }
+              ]
+          }
+      ]
+  }) }}
+
+  {{ button( {
+    class: 'hero__cta',
+    label: 'Subscribe to newsletter',
+    url: '#',
+    variant: 'secondary',
+    icon: 'chevron-right'
+  } ) }}
+
+  <div  class="hero__content">
+    <h1 class="hero__title u-margin-bottom--sm">We are going to create: <br/>A modal with a newsletter form!!</h1>
+    <p class="hero__subtitle">Let's get started!</p>
+  </div>
+
+</div>

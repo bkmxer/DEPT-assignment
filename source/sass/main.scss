@@ -1,0 +1,41 @@
+@charset 'UTF-8';
+
+$assets-path: '../' !default;
+
+/*------------------------------------*\
+  #MAIN
+\*------------------------------------*/
+
+@import '01_tools/tools.conversion';
+
+@import '00_settings/all';
+@import '01_tools/all';
+
+//  Vendor libs
+//      - styles from other sources (npm)
+//[INSERT VENDOR LIBS]
+
+@import '10_generic/generic.font-face';
+@import '10_generic/generic.normalize';
+@import '10_generic/generic.html';
+
+@import '20_elements/all';
+
+@import '30_objects/objects.grid';
+@import '30_objects/objects.background-image';
+
+/* components:scss */
+@import '../../source/components/button/stylesheet/_components.button';
+@import '../../source/components/cookies/stylesheet/_components.cookies';
+@import '../../source/components/footer/stylesheet/_components.footer';
+@import '../../source/components/header/stylesheet/_components.header';
+@import '../../source/components/hero/stylesheet/_components.hero';
+@import '../../source/components/image/stylesheet/_components.image';
+@import '../../source/components/modal/stylesheet/_components.modal';
+@import '../../source/components/newsletter/simple/stylesheet/_components.newsletter';
+@import '../../source/components/video/stylesheet/_components.video';
+/* endinject */
+
+@import '50_scopes/scopes.rich-text';
+
+@import '70_utilities/all';

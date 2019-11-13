@@ -1,0 +1,53 @@
+// Style
+$button-spacing: $global-spacing;
+$button-border-radius: 0;
+
+// Colors
+$button-font-color: $color-black;
+$button-icon-color: $button-font-color;
+$button-background-color: $color-grey;
+$button-font-color-hover: $color-white;
+$button-icon-color-hover: $button-font-color-hover;
+$button-background-color-hover: darken($button-background-color, 10%);
+
+// Transitions
+$button-transition-time: 300ms;
+$button-transition-ease: $ease-in-out-quad;
+
+@mixin button {
+  @include button--base;
+  padding: $button-spacing $button-spacing * 2;
+  border-radius: $button-border-radius;
+  background-color: $button-background-color;
+  color: $button-font-color;
+  transition: $button-transition-time $button-transition-ease;
+  transition-property: color, background-color;
+
+  .button__label {
+    display: block;
+  }
+
+  svg {
+    fill: $button-font-color;
+    transition: $button-transition-time $button-transition-ease;
+    transition-property: fill;
+  }
+
+  @include hover-focus {
+    color: $button-font-color-hover;
+    background-color: $button-background-color-hover;
+
+    svg {
+      fill: $button-font-color-hover;
+    }
+  }
+
+  @include keyboard-focus {
+    color: $button-font-color-hover;
+    background-color: darken($button-background-color-hover, 50%);
+
+    svg {
+      fill: $button-font-color-hover;
+    }
+  }
+}
