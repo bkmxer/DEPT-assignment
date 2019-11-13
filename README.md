@@ -54,6 +54,7 @@ The feature has the following requirements:
 9. If the API response was successful the modal should be closed and a success toast should be shown to the user saying: `Bedankt voor uw aanmelding!🎉`
 10. The toast should be a reusable component (we want to be able to use it anywhere we have success or error messages)
 11. Everything should be responsive
+12. Prefereably everything should also be accessible
 
 ![Gif of flow](https://media.giphy.com/media/ehPAyJ9h7OeXxbO0q6/giphy.gif)
 
