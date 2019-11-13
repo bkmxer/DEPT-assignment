@@ -42,19 +42,19 @@ The feature has the following requirements:
 
 1. The newsletter form can to be opened by clicking on the 'Subscribe to newsletter'-button in the hero
 2. The newsletter form will be displayed inside a modal component overlaying the page.
-3. The newsletter form is a modular component (because we want to easily reuse the form on another page)
+3. The newsletter form is a reusable component (because we want to easily reuse the form on another page)
 4. The video has to stop playing when you open the modal 
 5. The video has to continue playing again when you close the modal
-6. The newletter form should have form validation:
+6. The newsletter form should have form validation: (preferably create a reusable form validation mechanism)
     - all fields are required
     - email validation
-    - inputs show visual indication of validated state
-7. On submit the form should make an api call (can be to a fake endpoint)
-8. If the API response has an error it should show an error message 
+    - input fields show visual indication of validated state (success/error/neutral)
+7. On submit the form should make an API call (can be to a fake endpoint)
+8. If the API response returns an error it should show an error message 
 9. If the API response was successful the modal should be closed and a success toast should be shown to the user saying: `Bedankt voor uw aanmelding!🎉`
-10. The toast should be a reusable component (we want to be able to use it anywhere we have success or error messages)
+10. The toast should be a reusable component (we want to be able to use it anywhere we have success, warning or error messages)
 11. Everything should be responsive
-12. Prefereably everything should also be accessible
+12. Preferably everything is accessible aswell
 13. BONUS: Make it look nicer with animations or your own design 🎨
 14. BONUS: Add some sort of state management, or a mechanism for translations; you choose what you think will be an added value! 🛠
 
