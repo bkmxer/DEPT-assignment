@@ -8,8 +8,7 @@
 //    .u-padding-{direction}--xs     - .u-padding-{direction}--xlg
 //
 //
-$spacing-directions: ( 'top', 'left', 'bottom', 'right' );
-
+$spacing-directions: ('top', 'left', 'bottom', 'right');
 
 // Set vars for each
 $spacing-direction-done: '';
@@ -18,48 +17,51 @@ $spacing-breakpoint-done: false;
 
 // Loop trough all media queries
 @each $spacing-breakpoint-modifier, $spacing-media in $breakpoint-list {
+  // Loop trough all spacing sizes
+  @each $spacing-size-modifier, $spacing-size in $spacing-sizes {
+    // Loop trough all spacing directions
+    @each $spacing-direction in $spacing-directions {
+      // Check if size is responsive or not
+      @if (length($spacing-size) == 1) {
+        // Check if we should output another margin or skip
+        @if (
+          $spacing-direction-done !=
+            $spacing-direction and
+            $spacing-size-done !=
+            $spacing-size and
+            $spacing-breakpoint-done ==
+            false
+        ) {
+          $spacing-direction-done: $spacing-direction;
+          $spacing-size-done: $spacing-size-modifier;
 
-    // Loop trough all spacing sizes
-    @each $spacing-size-modifier, $spacing-size in $spacing-sizes {
+          .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
+            margin-#{$spacing-direction}: $spacing-size !important;
+          }
 
-        // Loop trough all spacing directions
-        @each $spacing-direction in $spacing-directions {
-
-            // Check if size is responsive or not
-            @if (length($spacing-size) == 1) {
-
-                // Check if we should output another margin or skip
-                @if ($spacing-direction-done != $spacing-direction and $spacing-size-done != $spacing-size and $spacing-breakpoint-done == false) {
-                    $spacing-direction-done: $spacing-direction;
-                    $spacing-size-done: $spacing-size-modifier;
-
-                    .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
-                        margin-#{$spacing-direction}: $spacing-size !important;
-                    }
-
-                    .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
-                        padding-#{$spacing-direction}: $spacing-size !important;
-                    }
-                }
-            } @else {
-                @if (map-get($spacing-size, $spacing-breakpoint-modifier) != null) {
-                    @media #{$spacing-media} {
-                        $spacing-px: map-get($spacing-size, $spacing-breakpoint-modifier);
-
-                        .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
-                            margin-#{$spacing-direction}: $spacing-px !important;
-                        }
-
-                        .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
-                            padding-#{$spacing-direction}: $spacing-px !important;
-                        }
-                    }
-                }
-            }
+          .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
+            padding-#{$spacing-direction}: $spacing-size !important;
+          }
         }
-    }
+      } @else {
+        @if (map-get($spacing-size, $spacing-breakpoint-modifier) != null) {
+          @media #{$spacing-media} {
+            $spacing-px: map-get($spacing-size, $spacing-breakpoint-modifier);
 
-    // Set to true to skip next breakpoints
-    // to prevent duplicate classes when no responsive margin present.
-    $spacing-breakpoint-done: true;
+            .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
+              margin-#{$spacing-direction}: $spacing-px !important;
+            }
+
+            .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
+              padding-#{$spacing-direction}: $spacing-px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Set to true to skip next breakpoints
+  // to prevent duplicate classes when no responsive margin present.
+  $spacing-breakpoint-done: true;
 }

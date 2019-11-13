@@ -1,0 +1,51 @@
+$textarea-border-width: $input-border-width;
+$textarea-border-radius: $input-border-radius;
+$textarea-border-color: $input-border-color;
+$textarea-error-color: $input-error-color;
+$textarea-fill-color: $input-fill-color;
+$textarea-padding-top: $input-padding-top;
+$textarea-padding-bottom: $input-padding-bottom;
+$textarea-padding-left: $input-padding-left;
+$textarea-padding-right: $input-padding-right;
+$textarea-transition-time: $input-transition-time;
+$textarea-transition-ease: $input-transition-ease;
+
+.c-textarea {
+    position: relative;
+}
+
+.textarea__label {
+    display: block;
+}
+
+.textarea__input {
+    display: block;
+    appearance: none;
+    width: 100%;
+    padding-top: $textarea-padding-top;
+    padding-bottom: $textarea-padding-bottom;
+    padding-left: $textarea-padding-left;
+    padding-right: $textarea-padding-right;
+    border-radius: $textarea-border-radius;
+    border: 0;
+    box-shadow: 0 0 0 $textarea-border-width $textarea-border-color inset;
+    background-color: $textarea-fill-color;
+    line-height: $font-line-height-body;
+
+    &[disabled] {
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    .form__item--error & {
+        box-shadow: 0 0 0 $textarea-border-width $textarea-error-color inset;
+    }
+}
+
+.textarea__wrapper {
+    position: relative;
+}

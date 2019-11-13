@@ -2,15 +2,13 @@
 
 ## Table of contents
 
-- [Modal component](#modal-component)
-  - [Table of contents](#table-of-contents)
-  - [What does it do](#what-does-it-do)
-  - [Install](#install)
-  - [How to use](#how-to-use)
-    - [Default](#default)
-    - [Custom](#custom)
-  - [Dependencies](#dependencies)
-  - [Developers](#developers)
+- [What does it do](#what-does-it-do)
+- [Install](#install)
+- [How to use](#how-to-use)
+- [Default](#default)
+- [Custom](#custom)
+- [Dependencies](#dependencies)
+- [Developers](#developers)
 
 ![Modal Demo](https://media.giphy.com/media/3BMtWjq6gBFu8iHqsS/giphy.gif)
 

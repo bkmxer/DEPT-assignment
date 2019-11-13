@@ -1,0 +1,25 @@
+{#
+    Fieldset
+
+    Options:
+        class {string}           (optional) - Adds custom classes
+        legend {string}                     - Adds a hook to the input
+        sronly {string}        (optional) - Hides legend
+
+#}
+{% macro fieldset(data) %}
+
+    <fieldset class="{%- if data.class %}{{ data.class }}{% endif -%}">
+        <legend class="{%- if data.sronly %}u-sr-only{% endif -%}">
+            {{ data.legend }}
+        </legend>
+
+        {% if caller() %}
+
+            {{ caller() }}
+
+        {% endif %}
+
+    </fieldset>
+
+{% endmacro %}

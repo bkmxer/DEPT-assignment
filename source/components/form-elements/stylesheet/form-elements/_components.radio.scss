@@ -1,0 +1,77 @@
+$radio-size: 20px;
+$radio-border-width: 1px;
+$radio-border-radius: $radio-size;
+$radio-color: $color-black;
+$radio-error-color: $form-item-error-border-color;
+$radio-margin-right: $global-spacing * 2;
+$radio-transition-time: 200ms;
+$radio-transition-ease: $ease-in-out-quad;
+
+.radio__input {
+    @include sr-only;
+
+    &:checked {
+        & + label {
+            &::before {
+                transform: translateY(-50%) scale(1);
+            }
+        }
+    }
+
+    &:hover {
+        + label::after {
+            box-shadow: 0 0 0 $radio-border-width $radio-color inset;
+        }
+    }
+}
+
+.radio__label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: $radio-size + 10px;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        border-radius: $radio-border-radius;
+        top: 50%;
+        left: 0;
+        width: $radio-size;
+        height: $radio-size;
+        cursor: pointer;
+    }
+
+    &::before {
+        box-shadow: 0 0 0 $radio-border-width*3 $color-white inset, 0 0 0 $radio-size $radio-color inset;
+        transform: translateY(-50%) scale(0);
+        transition: $radio-transition-time $radio-transition-ease;
+        transition-property: transform;
+    }
+
+    &::after {
+        transform: translateY(-50%);
+        transition: $checkbox-transition-time $checkbox-transition-ease;
+        transition-property: box-shadow;
+        box-shadow: 0 0 0 $radio-border-width $radio-color inset, 0 0 0 $radio-border-width*3 $color-white inset;
+
+        .form__item--error & {
+            box-shadow: 0 0 0 $radio-border-width $radio-error-color inset, 0 0 0 $radio-border-width*3 $color-white inset;
+        }
+    }
+}
+
+/**
+ * Horizontal
+ */
+.radio--horizontal {
+    .radio__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .radio__label {
+        margin-right: $checkbox-margin-right;
+    }
+}

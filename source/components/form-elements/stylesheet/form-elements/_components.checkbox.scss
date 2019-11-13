@@ -1,0 +1,91 @@
+$checkbox-size: 20px;
+$checkbox-border-width: 1px;
+$checkbox-border-radius: 0;
+$checkbox-color: $color-black;
+$checkbox-error-color: #ff0000;
+$checkbox-margin-right: $global-spacing * 2;
+$checkbox-transition-time: 200ms;
+$checkbox-transition-ease: $ease-in-out-quad;
+
+// .c-checkbox {
+// }
+
+.checkbox__input {
+    @include sr-only;
+
+    &:checked {
+        & + label {
+            &::before {
+                transform: translateY(-50%) scale(1);
+            }
+        }
+    }
+
+    &[disabled] {
+        & + label {
+            cursor: default;
+
+            &::after,
+            &::before {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    &:hover {
+        + label::after {
+            box-shadow: 0 0 0 $checkbox-border-width $checkbox-color inset;
+        }
+    }
+}
+
+.checkbox__label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: $checkbox-size + 10px;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        border-radius: $checkbox-border-radius;
+        top: 50%;
+        left: 0;
+        width: $checkbox-size;
+        height: $checkbox-size;
+        cursor: pointer;
+    }
+
+    &::before {
+        box-shadow: 0 0 0 $checkbox-border-width*3 $color-white inset, 0 0 0 $checkbox-size $checkbox-color inset;
+        transform: translateY(-50%) scale(0);
+        transition: $checkbox-transition-time $checkbox-transition-ease, $checkbox-transition-time $checkbox-transition-ease;
+        transition-property: transform, box-shadow;
+    }
+
+    &::after {
+        transform: translateY(-50%);
+        transition: $checkbox-transition-time $checkbox-transition-ease;
+        transition-property: box-shadow;
+        box-shadow: 0 0 0 $checkbox-border-width $checkbox-color inset, 0 0 0 $checkbox-border-width*3 $color-white inset;
+
+        .form__item--error & {
+            box-shadow: 0 0 0 $checkbox-border-width $checkbox-error-color inset, 0 0 0 $checkbox-border-width*3 $color-white inset;
+        }
+    }
+}
+
+/**
+ * Horizontal
+ */
+.checkbox--horizontal {
+    .checkbox__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .checkbox__label {
+        margin-right: $checkbox-margin-right;
+    }
+}

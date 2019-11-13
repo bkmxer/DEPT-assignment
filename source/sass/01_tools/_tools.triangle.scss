@@ -27,39 +27,38 @@
 //
 //    }
 
-
 @mixin triangle($direction, $width, $height, $color: #ff0033) {
-    @if unitless($width) {
-        $width: $width;
-    }
+  @if unitless($width) {
+    $width: $width;
+  }
 
-    @if unitless($height) {
-        $height: $height;
-    }
-    content: '';
-    display: inline-block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
+  @if unitless($height) {
+    $height: $height;
+  }
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
 
-    @if ($direction == top) {
-        border-width: 0 $width / 2 $height;
-        border-color: transparent transparent $color;
-    }
+  @if ($direction == top) {
+    border-width: 0 $width / 2 $height;
+    border-color: transparent transparent $color;
+  }
 
-    @if ($direction == right) {
-        border-width: $height / 2 0 $height / 2 $width;
-        border-color: transparent transparent transparent $color;
-    }
+  @if ($direction == right) {
+    border-width: $height / 2 0 $height / 2 $width;
+    border-color: transparent transparent transparent $color;
+  }
 
-    @if ($direction == bottom) {
-        border-width: $height $width / 2 0;
-        border-color: $color transparent transparent;
-    }
+  @if ($direction == bottom) {
+    border-width: $height $width / 2 0;
+    border-color: $color transparent transparent;
+  }
 
-    @if ($direction == left) {
-        border-width: $height / 2 $width $height / 2 0;
-        border-color: transparent $color;
-    }
+  @if ($direction == left) {
+    border-width: $height / 2 $width $height / 2 0;
+    border-color: transparent $color;
+  }
 }

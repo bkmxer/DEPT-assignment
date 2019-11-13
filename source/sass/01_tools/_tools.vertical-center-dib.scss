@@ -31,30 +31,20 @@
 //		@mixin:  vertical-center-dib
 //		@param:  $opt-elements         - any number of children selectors to align.
 
-
-
 @mixin vertical-center-dib($opt-elements...) {
-
   &:before {
-
     content: '';
     display: inline-block;
     height: 100%;
     font-family: monospace;
     margin-left: -0.25em;
     vertical-align: middle;
-
   }
 
   @each $element in $opt-elements {
-
     #{$element} {
-
       display: inline-block !important;
       vertical-align: middle;
-
     }
-
   }
-
 }

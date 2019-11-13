@@ -2,6 +2,6 @@
  * @shelf-version: 1.0.0
  */
 
-import Cookies from './cookies';
+import Cookies from './cookies'
 
-export default Cookies;
+export default Cookies

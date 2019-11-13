@@ -1,0 +1,80 @@
+{#
+    @shelf-version: 1.0.0
+    Form elements
+#}
+
+{% from 'form-elements/form.html' import form as formElement %}
+{% from 'form-elements/fieldset.html' import fieldset as fieldsetElement %}
+{% from 'form-elements/input.html' import input as inputElement %}
+{% from 'form-elements/autocomplete.html' import autocomplete as autocompleteElement %}
+{% from 'form-elements/file.html' import file as fileElement %}
+{% from 'form-elements/radio.html' import radio as radioElement %}
+{% from 'form-elements/checkbox.html' import checkbox as checkboxElement %}
+{% from 'form-elements/select.html' import select as selectElement %}
+{% from 'form-elements/textarea.html' import textarea as textareaElement %}
+
+{% macro checkbox(data) %}
+
+    {{ checkboxElement(data) }}
+
+{% endmacro %}
+
+
+{% macro radio(data) %}
+
+   {{ radioElement(data) }}
+
+{% endmacro %}
+
+
+{% macro select(data) %}
+
+    {{ selectElement(data) }}
+
+{% endmacro %}
+
+
+{% macro textarea(data) %}
+
+    {{ textareaElement(data) }}
+
+{% endmacro %}
+
+
+{% macro input(data) %}
+
+    {{ inputElement(data) }}
+
+{% endmacro %}
+
+
+{% macro autocomplete(data) %}
+
+  {{ autocompleteElement(data) }}
+
+{% endmacro %}
+
+
+{% macro file(data) %}
+
+    {{ fileElement(data) }}
+
+{% endmacro %}
+
+
+{% macro form(data) %}
+
+    {% call formElement(data) %}
+        {{ caller() }}
+    {% endcall %}
+
+{% endmacro %}
+
+
+{% macro fieldset(data) %}
+
+    {% call fieldsetElement(data) %}
+        {{ caller() }}
+    {% endcall %}
+
+{% endmacro %}

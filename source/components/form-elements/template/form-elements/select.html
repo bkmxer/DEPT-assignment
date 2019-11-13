@@ -1,0 +1,59 @@
+{#
+    Select
+
+    Options:
+        class {string}           (optional) - Adds custom classes
+        type {string}            (optional) - Adds a label to the select
+        label {string}                      - Adds a label to the select
+        id {string|int}                     - Adds an id to the select (needed for label to be clickable)
+        value {string                       - Adds a value to the select
+        name {string}                       - Adds a name to the select
+        hook {string}            (optional) - Adds a hook to the select
+        attr {string}                       - Adds attributes to the select
+        required {boolean}       (optional) - Add required property to the select
+        disabled {boolean}       (optional) - Add disabled property to the select
+        error {string}           (optional) - Add error state and message
+        options {object}                    - Adds options
+        options.default {string} (optional) - Adds option default state
+        options.label {string}              - Adds option label
+        options.value {string}              - Adds option value
+
+#}
+{% macro select(data) %}
+
+    <div class="c-select form__item
+        {%- if data.class %} {{ data.class }}{% endif -%}
+        {%- if data.disabled %} form__item--disabled{% endif -%}
+        {%- if data.labelAsPlaceholder %} form__item--lap{% endif -%}"
+        {%- if data.labelAsPlaceholder %} js-hook-lap{% endif -%}>
+
+        <div class="select__wrapper">
+            <label class="select__label {%- if data.sronly %} u-sr-only{% endif -%}" for="{{ data.id }}">
+                {{ data.label|safe }}
+            </label>
+            <select class="select__input"
+                name="{{ data.name }}"
+                id="{{ data.id }}"
+                {%- if data.required %} required="required"{% endif -%}
+                {%- if data.disabled %} disabled="disabled"{% endif -%}
+                {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}
+                {%- if data.attr %} {{ data.attr|safe }}{% endif -%}>
+
+                {% for option in data.options %}
+                    <option
+                        {% if option.default %}hidden selected {% endif -%}
+                        value="{{ option.value }}">
+                        {% if not(option.default and data.labelAsPlaceholder) %}{{ option.label }}{% endif %}
+                    </option>
+                {% endfor %}
+
+            </select>
+            <span class="focus-helper"></span>
+        </div>
+        {%- if data.error %}
+            <div class="form__item-error">{{ data.error }}</div>
+        {% endif -%}
+
+    </div>
+
+{% endmacro %}

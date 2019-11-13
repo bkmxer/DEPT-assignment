@@ -2,6 +2,6 @@
  * @shelf-version: 1.0.0
  */
 
-import RafThrottle from './raf-throttle';
+import RafThrottle from './raf-throttle'
 
-export default RafThrottle;
+export default RafThrottle

@@ -1,0 +1,52 @@
+{#
+    Checkbox
+
+    Options:
+        class {string}             (optional) - Adds custom classes
+        horizontal {boolean}       (optional) - Makes radio group horizontal
+        disabled {boolean}         (optional) - Add disabled property to the checkbox element
+        required {boolean}         (optional) - Add required property to the select
+        attr {string}              (optional) - Adds attributes to the checkbox element
+        error {string}             (optional) - Add error state and message
+        options.label {string}                - Adds a label to the checkbox option
+        options.id {string|int}               - Adds an id to the checkbox option (needed for label to be clickable)
+        options.value {string                 - Adds a value to the checkbox option
+        options.name {string}                 - Adds a name to the checkbox option
+        options.hook {string}      (optional) - Adds a hook to the checkbox option
+        options.attr {string}      (optional) - Adds attributes to the checkbox option
+        options.checked {boolean}  (optional) - Adds attributes to the checkbox option
+
+#}
+
+{% macro checkbox(data) %}
+
+    <div class="c-checkbox form__item
+        {%- if data.horizontal %} checkbox--horizontal{% endif %}
+        {%- if data.class %} {{ data.class }}{% endif -%}
+        {%- if data.disabled %} form__item--disabled{% endif -%}">
+
+        <div class="checkbox__wrapper">
+        {% for option in data.options %}
+            <input class="checkbox__input u-sr-only"
+                type="checkbox"
+                name="{{ data.name }}"
+                value="{{ option.value }}"
+                id="{{ option.id }}"
+                {%- if data.required %} required="required"{% endif -%}
+                {%- if option.disabled %} disabled="disabled"{% endif -%}
+                {%- if option.checked %} checked="checked"{% endif -%}
+                {%- if option.hook %} js-hook-{{ option.hook }}{% endif -%}
+                {%- if option.attr %} {{ option.attr|safe }}{% endif -%}>
+            <label class="checkbox__label" for="{{ option.id }}" role="button">
+                {{ option.label|safe }}
+                <span class="checkbox__focus-helper"></span>
+            </label>
+        {% endfor %}
+        </div>
+        {%- if data.error %}
+            <div class="form__item-error">{{ data.error }}</div>
+        {% endif -%}
+
+    </div>
+
+{% endmacro %}

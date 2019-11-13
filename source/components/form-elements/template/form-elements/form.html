@@ -1,0 +1,28 @@
+{#
+    Form
+
+    Options:
+        class {string}           (optional) - Adds custom classes
+        action {string}          (optional) - Adds a label to the input
+        method {string}          (optional) - Adds a label to the input
+        attr {string}            (optional) - Adds attributes to the input
+        hook {string}            (optional) - Adds a hook to the input
+
+#}
+{% macro form(data) %}
+
+    <form class="c-form{%- if data.class %} {{ data.class }}{% endif -%}"
+        action="{{ data.action or '#' }}"
+        {%- if data.method %} method="{{ data.method }}"{% endif -%}
+        {%- if data.attr %} {{ data.attr|safe }}{% endif -%}
+        {%- if data.hook %} js-hook-{{ data.hook|safe }}{% endif -%}>
+
+        {% if caller() %}
+
+            {{ caller() }}
+
+        {% endif %}
+
+    </form>
+
+{% endmacro %}

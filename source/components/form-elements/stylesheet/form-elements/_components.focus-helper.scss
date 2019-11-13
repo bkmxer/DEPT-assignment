@@ -1,0 +1,73 @@
+$helper-border-height: 4px;
+$helper-transition-ease: $ease-in-out-quad;
+$helper-transition-time: 200ms;
+
+.focus-helper {
+    @include focus-state-input($height: $helper-border-height);
+
+    &::before {
+        opacity: 0;
+        transition: $helper-transition-time $helper-transition-ease;
+        transition-property: opacity;
+    }
+}
+
+.checkbox__focus-helper,
+.radio__focus-helper {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    opacity: 0;
+    z-index: -1;
+}
+
+.checkbox__focus-helper {
+    width: $checkbox-size;
+    height: $checkbox-size;
+    @include focus-state-pulse;
+}
+
+.radio__focus-helper {
+    width: $radio-size;
+    height: $radio-size;
+    @include focus-state-pulse($round: true);
+}
+
+.has--keyboard-focus {
+    .input__input,
+    .textarea__input,
+    .select__input,
+    .u-sr-only {
+        &:focus {
+            + .focus-helper {
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .checkbox__input {
+        &:focus {
+            + label {
+                .checkbox__focus-helper {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .radio__input {
+        &:focus {
+            + label {
+                .radio__focus-helper {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

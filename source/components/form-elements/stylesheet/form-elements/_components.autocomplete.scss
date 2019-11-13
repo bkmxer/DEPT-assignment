@@ -1,0 +1,52 @@
+$autocomplete-list-border-color: $color-black;
+$autocomplete-list-border-size: 1px;
+$autocomplete-list-fill-color: $color-white;
+$autocomplete-list-item-color: $color-black;
+$autocomplete-list-item-active-color: $color-primary;
+
+.c-autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete__element {
+    opacity: 0;
+    position: absolute;
+    top: calc(100% - #{$form-item-margin});
+    transition-property: opacity, transform, visibility;
+    transition-duration: 250ms;
+    transform: translate3d(0, 10px, 0);
+    visibility: hidden;
+    width: 100%;
+    z-index: 10;
+}
+
+.autocomplete__element--is-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+}
+
+.autocomplete__list {
+    font-size: $font-size-body;
+    line-height: $font-line-height-body;
+    background-color: $autocomplete-list-fill-color;
+    border: $autocomplete-list-border-size solid $autocomplete-list-border-color;
+    list-style: none;
+    padding: 0;
+}
+
+.autocomplete__list-item {
+    font-size: $font-size-body;
+    line-height: $font-line-height-body;
+    background-color: transparent;
+    color: $autocomplete-list-item-color;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 250ms;
+    padding: $global-spacing-xs;
+}
+
+.autocomplete__list-item--is-active {
+    color: $autocomplete-list-item-active-color;
+}

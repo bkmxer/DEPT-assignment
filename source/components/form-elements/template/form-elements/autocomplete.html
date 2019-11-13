@@ -1,0 +1,36 @@
+{#
+    Autocomplete
+
+    Options:
+        class {string}           (optional) - Adds custom classes
+        type {string}            (optional) - Adds a label to the input
+        label {string}                      - Adds a label to the input
+        id {string|int}                     - Adds an id to the input (needed for label to be clickable)
+        value {string                       - Adds a value to the input
+        name {string}                       - Adds a name to the input
+        hook {string}            (optional) - Adds a hook to the input
+        attr {string}                       - Adds attributes to the input
+        pattern {string}           (optional) - Adds attributes to the input
+        disabled {boolean}       (optional) - Add disabled property to the input
+        required {boolean}       (optional) - Add required property to the input
+        error {string}           (optional) - Add error state and message
+
+#}
+
+{% from 'form-elements/input.html' import input %}
+
+{% macro autocomplete(data) %}
+
+    <div class="c-autocomplete">
+
+        {{ input(data) }}
+
+        <div class="autocomplete__element" js-hook-autocomplete="{{ data.hook }}">
+
+            <ul class="autocomplete__list" js-hook-autocomplete-list></ul>
+
+        </div>
+
+    </div>
+
+{% endmacro %}

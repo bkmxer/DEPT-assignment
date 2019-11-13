@@ -1,0 +1,52 @@
+{#
+    Radio
+
+    Options:
+        class {string}             (optional) - Adds custom classes
+        horizontal {boolean}       (optional) - Makes radio group horizontal
+        disabled {boolean}         (optional) - Add disabled property to the radio
+        required {boolean}         (optional) - Add required property to the select
+        attr {string}              (optional) - Adds attributes to the radio element
+        error {string}             (optional) - Add error state and message
+        name {string}                         - Adds name to all containing options
+        options.label {string}                - Adds a label to the radio option
+        options.id {string|int}               - Adds an id to the radio option (needed for label to be clickable)
+        options.value {string                 - Adds a value to the radio option
+        options.hook {string}      (optional) - Adds a hook to the radio option
+        options.attr {string}      (optional) - Adds attributes to the radio
+        options.checked {boolean}  (optional) - Adds attributes to the radio
+
+#}
+
+{% macro radio(data) %}
+
+    <div class="c-radio form__item
+        {%- if data.horizontal %} radio--horizontal{% endif %}
+        {%- if data.class %} {{ data.class }}{% endif -%}
+        {%- if data.disabled %} form__item--disabled{% endif -%}">
+
+        <div class="radio__wrapper">
+        {% for option in data.options %}
+            <input class="radio__input u-sr-only"
+                type="radio"
+                name="{{ data.name }}"
+                value="{{ option.value }}"
+                id="{{ option.id }}"
+                {%- if option.disabled %} disabled="disabled"{% endif -%}
+                {%- if data.required %} required="required"{% endif -%}
+                {%- if option.checked %} checked="checked"{% endif -%}
+                {%- if option.hook %} js-hook-{{ option.hook }}{% endif -%}
+                {%- if option.attr %} {{ option.attr|safe }}{% endif -%}>
+            <label class="radio__label" for="{{ option.id }}" role="button">
+                {{ option.label|safe }}
+                <span class="radio__focus-helper"></span>
+            </label>
+        {% endfor %}
+        </div>
+        {%- if data.error %}
+            <div class="form__item-error">{{ data.error }}</div>
+        {% endif -%}
+
+    </div>
+
+{% endmacro %}

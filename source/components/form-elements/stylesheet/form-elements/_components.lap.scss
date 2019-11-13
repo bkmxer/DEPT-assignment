@@ -1,0 +1,38 @@
+$lap-transition-time: 300ms;
+$lap-transition-ease: ease;
+$lap-padding-width: 20px;
+$lap-padding-height: 10px;
+
+.form__item--lap {
+    .input__label,
+    .textarea__label,
+    .select__label {
+        pointer-events: none;
+        position: absolute;
+        transform: translate3d($lap-padding-width, $lap-padding-height, 0);
+        transform-origin: 0 0;
+        transition: $lap-transition-time $lap-transition-ease;
+        transition-property: transform, color, max-width;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: calc(100% - (#{$lap-padding-width} * 2));
+        text-overflow: ellipsis;
+    }
+
+    &.input--file {
+        .input__label {
+            left: 20px;
+            max-width: calc(100% - calc((#{$lap-padding-width} * 2) + 20px));
+        }
+    }
+}
+
+.form__item--lap-active {
+    .input__label,
+    .textarea__label,
+    .select__label,
+    &.input--file .input__label {
+        transform: translate3d(0, -25px, 0) scale(0.8);
+        max-width: 120%;
+    }
+}

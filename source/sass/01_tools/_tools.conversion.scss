@@ -9,16 +9,15 @@
 //
 
 @function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
-    }
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
 
-    @return $number;
+  @return $number;
 }
-
 
 // Px to em
 
 @function em($px, $context: 16px) {
-    @return ($px / $context) * 1em;
+  @return ($px / $context) * 1em;
 }

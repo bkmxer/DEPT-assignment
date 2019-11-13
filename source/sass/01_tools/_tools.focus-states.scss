@@ -15,58 +15,58 @@
 //
 
 @mixin focus-state-pulse($round: false, $size: 15px, $color: $color-primary) {
-    &::before {
-        display: block;
-        width: calc(100% + #{$size});
-        height: calc(100% + #{$size});
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-        background-color: $color;
-        animation: focus-pulse 1500ms $ease-in-out-circ infinite;
-        z-index: -1;
-        content: '';
+  &::before {
+    display: block;
+    width: calc(100% + #{$size});
+    height: calc(100% + #{$size});
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: $color;
+    animation: focus-pulse 1500ms $ease-in-out-circ infinite;
+    z-index: -1;
+    content: '';
 
-        @if ($round) {
-            border-radius: 50%;
-        }
+    @if ($round) {
+      border-radius: 50%;
+    }
+  }
+
+  @keyframes focus-pulse {
+    0% {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.85);
     }
 
-    @keyframes focus-pulse {
-        0% {
-            opacity: 0;
-            transform: translate3d(-50%, -50%, 0) scale(0.85);
-        }
-
-        50% {
-            opacity: 0.15;
-            transform: translate3d(-50%, -50%, 0) scale(1);
-        }
-
-        100% {
-            opacity: 0;
-            transform: translate3d(-50%, -50%, 0) scale(0.85);
-        }
+    50% {
+      opacity: 0.15;
+      transform: translate3d(-50%, -50%, 0) scale(1);
     }
+
+    100% {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.85);
+    }
+  }
 }
 
 @mixin focus-state-input($height: 2px, $color: $color-primary) {
-    &::before {
-        display: block;
-        width: 100%;
-        height: $height;
-        bottom: -($height / 2);
-        position: absolute;
-        background-color: $color;
-        content: '';
-    }
+  &::before {
+    display: block;
+    width: 100%;
+    height: $height;
+    bottom: -($height / 2);
+    position: absolute;
+    background-color: $color;
+    content: '';
+  }
 }
 
 @mixin keyboard-focus {
-    .has--keyboard-focus & {
-        &:focus {
-            @content;
-        }
+  .has--keyboard-focus & {
+    &:focus {
+      @content;
     }
+  }
 }
