@@ -55,6 +55,8 @@ The feature has the following requirements:
 10. The toast should be a reusable component (we want to be able to use it anywhere we have success or error messages)
 11. Everything should be responsive
 12. Prefereably everything should also be accessible
+13. BONUS: Make it look nicer with animations or your own design 🎨
+14. BONUS: Add some sort of state management 🎨
 
 ![Gif of flow](https://media.giphy.com/media/ehPAyJ9h7OeXxbO0q6/giphy.gif)
 
