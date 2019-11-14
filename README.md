@@ -40,6 +40,7 @@ _We have formulated an assignment to test your technical knowledge. The assignme
 You have 8 to 16 hours to complete the assignment. If no completion date has been agreed on with you, try to complete the assignment within a week. Put your code on a public git repository and send us the link to your repository where we can find both the source code and the compiled version. That means no ZIP files. And please make sure that we can run the code on our computers by including a readme.
 
 __Let's get started!__
+
 When you have the project running you will see a homepage with a video and a header.
 
 We like you to extend this basic page with a new feature: a newsletter subscribe form!
