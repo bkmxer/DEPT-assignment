@@ -35,6 +35,11 @@ __2. Start the project__
 `npm run gulp` or  `npm run start`
 
 # Assignment #
+_We have formulated an assignment to test your technical knowledge. The assignment is specifically made to see how you would integrate a new feature into an existing setup. This means you do not need to setup the project from scratch and it already consists of a builder (if you feel like improving it - add webpack for example - we encourage that of course)._
+
+You have 8 to 16 hours to complete the assignment. If no completion date has been agreed on with you, try to complete the assignment within a week. Put your code on a public git repository and send us the link to your repository where we can find both the source code and the compiled version. That means no ZIP files. And please make sure that we can run the code on our computers by including a readme.
+
+__Let's get started!__
 When you have the project running you will see a homepage with a video and a header.
 
 We like you to extend this basic page with a new feature: a newsletter subscribe form!
@@ -55,8 +60,9 @@ The feature has the following requirements:
 10. The toast should be a reusable component (we want to be able to use it anywhere we have success, warning or error messages)
 11. Everything should be responsive
 12. Preferably everything is accessible aswell
-13. BONUS: Make it look nicer with animations or your own design 🎨
+13. BONUS: Make it look nicer with animations, transitions or your own design 🎨
 14. BONUS: Add some sort of state management, or a mechanism for translations; you choose what you think will be an added value! 🛠
+15. BONUS: Create a 100% Progressive Web App (check it with lighthouse)
 
 ![Gif of flow](https://media.giphy.com/media/ehPAyJ9h7OeXxbO0q6/giphy.gif)
 
