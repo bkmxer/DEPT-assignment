@@ -7,8 +7,8 @@ import './config'
 import '@utilities/detect-touch'
 import '@utilities/detect-keyboard-focus'
 import '@utilities/in-view'
-
 import '@components/image'
+
 import VideoLoader from '@components/video/loader'
 
 // Sync example
