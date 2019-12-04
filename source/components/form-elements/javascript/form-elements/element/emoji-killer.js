@@ -6,17 +6,17 @@
  * @constructor
  */
 const EmojiKiller = element => {
-  const emojiRange = /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
-  const elementArray = Array.from(element);
+  const emojiRange = /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g
+  const elementArray = Array.from(element)
 
   elementArray.forEach(input => {
-    input.addEventListener('change', () => preventEmoji(input));
-    input.addEventListener('input', () => preventEmoji(input));
-  });
+    input.addEventListener('change', () => preventEmoji(input))
+    input.addEventListener('input', () => preventEmoji(input))
+  })
 
   function preventEmoji(domElement) {
-    domElement.value = domElement.value.replace(emojiRange, '');
+    domElement.value = domElement.value.replace(emojiRange, '')
   }
-};
+}
 
-export default EmojiKiller;
+export default EmojiKiller

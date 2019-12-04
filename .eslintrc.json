@@ -30,7 +30,7 @@
     "semi": 0,
     "no-prototype-builtins": 0,
     "import/no-unresolved": "off",
-    "simple-import-sort/sort": "warn",
+    "simple-import-sort/sort": "off",
     "import/named": "off"
   }
 }

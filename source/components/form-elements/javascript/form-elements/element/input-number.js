@@ -3,8 +3,8 @@
  */
 class NumberInput {
   constructor(element) {
-    this.element = element;
-    this.bindEvents();
+    this.element = element
+    this.bindEvents()
   }
 
   /**
@@ -12,13 +12,13 @@ class NumberInput {
    * @param event - keypress event
    */
   static preventNonNumericValue(event) {
-    const EventKey = event.key;
-    const EventKeyCode = event.keyCode;
+    const EventKey = event.key
+    const EventKeyCode = event.keyCode
 
-    const IsNumberModern = /^[0-9]$/i.test(EventKey) || false;
-    const IsNumberLegacy = (EventKeyCode >= 47 && EventKeyCode <= 58) || false; // Fallback for browsers that don't support event.key. Range is numeric keys.
+    const IsNumberModern = /^[0-9]$/i.test(EventKey) || false
+    const IsNumberLegacy = (EventKeyCode >= 47 && EventKeyCode <= 58) || false // Fallback for browsers that don't support event.key. Range is numeric keys.
 
-    if (!IsNumberModern && !IsNumberLegacy) event.preventDefault();
+    if (!IsNumberModern && !IsNumberLegacy) event.preventDefault()
   }
 
   /**
@@ -27,32 +27,32 @@ class NumberInput {
    * @param event - paste event
    */
   stripNonNumericValue(event) {
-    event.preventDefault();
+    event.preventDefault()
 
-    let pastedText;
+    let pastedText
 
     if (event.clipboardData && event.clipboardData.getData) {
       // Standards Compliant FIRST!
-      pastedText = event.clipboardData.getData('text/plain');
+      pastedText = event.clipboardData.getData('text/plain')
     } else if (window.clipboardData && window.clipboardData.getData) {
       // IE
-      pastedText = window.clipboardData.getData('Text');
+      pastedText = window.clipboardData.getData('Text')
     }
 
-    this.element.value = pastedText.replace(/\D/, '');
+    this.element.value = pastedText.replace(/\D/, '')
 
-    const changeEvent = new Event('change');
-    this.element.dispatchEvent(changeEvent);
+    const changeEvent = new Event('change')
+    this.element.dispatchEvent(changeEvent)
   }
 
   /**
    * Bind all events
    */
   bindEvents() {
-    this.element.addEventListener('keypress', event => NumberInput.preventNonNumericValue(event));
+    this.element.addEventListener('keypress', event => NumberInput.preventNonNumericValue(event))
 
-    this.element.addEventListener('paste', event => this.stripNonNumericValue(event));
+    this.element.addEventListener('paste', event => this.stripNonNumericValue(event))
   }
 }
 
-export default NumberInput;
+export default NumberInput
