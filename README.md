@@ -37,7 +37,7 @@ __2. Start the project__
 # Assignment #
 _We have formulated an assignment to test your technical knowledge. The assignment is specifically made to see how you would integrate a new feature into an existing setup. This means you do not need to setup the project from scratch and it already consists of a builder (if you feel like improving it - add webpack for example - we encourage that of course)._
 
-You have 8 to 16 hours to complete the assignment. If no completion date has been agreed on with you, try to complete the assignment within a week. Put your code on a public git repository and send us the link to your repository where we can find both the source code and the compiled version. That means no ZIP files. And please make sure that we can run the code on our computers by including a readme.
+You have 8 to 16 hours to complete the assignment. If no completion date has been agreed on with you, try to complete the assignment within a week. Put your code on a __public git repository__ and send us the link to your repository where we can find both the source code and the compiled version. That means __no ZIP files__. And please make sure that we can run the code on our computers by including a readme.
 
 __Let's get started!__
 
