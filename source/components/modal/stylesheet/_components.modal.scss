@@ -2,6 +2,7 @@
 $modal-max-width: 1600px !default;
 $modal-gutter: $global-spacing * 2 !default;
 $modal-gutter-small: $global-spacing * 2 !default;
+$modal-gutter-medium: $global-spacing * 4 !default;
 $modal-gutter-large: $global-spacing * 6 !default;
 $modal-transition-time: 400ms !default;
 $modal-transition-ease: $ease-in-out-quad !default;
@@ -139,6 +140,7 @@ $modal-max-width: 700px;
   z-index: 1;
   max-width: $modal-max-width;
   margin: $modal-gutter-small auto;
+  margin-top: $modal-gutter-medium;
   width: auto;
   height: auto;
   opacity: 0;

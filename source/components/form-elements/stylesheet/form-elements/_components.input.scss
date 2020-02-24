@@ -44,10 +44,48 @@ $input-transition-ease: $ease-in-out-quad;
     .form__item--error & {
         box-shadow: 0 0 0 $input-border-width $input-error-color inset;
     }
+
+    &:focus {
+        &+.input__indicator {
+            background-color: $color-grey-light;
+            transform: scale(1);
+        }
+    }
+
+    &--valid {
+        &:focus {
+            &+.input__indicator {
+                background-color: $color-success;
+                transform: scale(1);
+            }
+        }
+    }
+
+    &--invalid {
+        &:focus {
+            &+.input__indicator {
+                background-color: $color-primary;
+                transform: scale(1);
+            }
+        }
+    }
 }
 
 .input__wrapper {
     position: relative;
+
+    .input__indicator {
+        background-color: dodgerblue;
+        display: inline-block;
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        transform: scale(0, 1);
+        transition: all 0.5s linear;
+    }
 }
 
 /**

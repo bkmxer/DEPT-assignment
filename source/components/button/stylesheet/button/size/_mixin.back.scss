@@ -16,4 +16,18 @@ $button-back-icon-spacing: $global-spacing * 4;
       left: 25px;
     }
   }
+
+  @include hover-focus {
+    &:not([disabled]) {
+      .button__icon {
+        transform: translateX(-$global-spacing/2);
+      }
+    }
+  }
+
+  &-to-form {
+    position: relative;
+    display: block;
+    margin-top: $global-spacing;
+  }
 }

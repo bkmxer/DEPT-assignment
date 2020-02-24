@@ -1,0 +1,138 @@
+{#
+    @shelf-version: 1.0.0
+    Newsletter - Simple template
+#}
+
+{% import 'form-elements.html' as form %}
+{% from 'button.html' import button %}
+
+<div class="c-newsletter" js-hook-newsletter>
+    <div class="o-container">
+
+        {% call form.form({
+            class: 'newsletter__form',
+            hook: 'newsletter-subscription-form'
+        }) %}
+            {% call form.fieldset({
+                legend: 'Newsletter signup',
+                sronly: true,
+                class: 'newsletter__fieldset'
+            }) %}
+                <div class="o-grid">
+                    <div class="o-col-12 u-flex-first">
+                        <div class="newsletter__form-wrapper">
+
+                            <h3 class="u-h2 newsletter__title">
+                                Niks willen missen van onze nieuwtjes en acties?
+                            </h3>
+
+                            <div class="newsletter__inputs-wrapper">
+                                <div class="newsletter__inputs">
+                                    <div class="o-grid">
+                                        <div class="o-col-12">
+                                            {{ form.input({
+                                                type: 'email',
+                                                name: 'email',
+                                                id: 'newsletter-email',
+                                                label: 'emailaddress',
+                                                sronly: true,
+                                                placeholder: 'Emailaddress',
+                                                required: true,
+                                                hook: 'newsletter-subscription-form-input'
+                                            }) }}
+                                        </div>
+
+                                        <div class="o-col-12 o-col-6--md">
+                                            {{ form.input({
+                                                type: 'text',
+                                                name: 'firstname',
+                                                id: 'newsletter-firstname',
+                                                label: 'Firstname',
+                                                sronly: true,
+                                                placeholder: 'First name',
+                                                required: true,
+                                                hook: 'newsletter-subscription-form-input'
+                                            }) }}
+                                        </div>
+                                        <div class="o-col-12 o-col-6--md u-text--right">
+                                            {{ form.input({
+                                                type: 'text',
+                                                name: 'lastname',
+                                                id: 'newsletter-lastname',
+                                                label: 'Lastname',
+                                                sronly: true,
+                                                placeholder: 'Last name',
+                                                required: true,
+                                                hook: 'newsletter-subscription-form-input'
+                                            }) }}
+
+                                            {{ button({
+                                                element: 'button',
+                                                type: 'button',
+                                                label: 'Back',
+                                                variant: 'ghost',
+                                                icon: 'chevron-left',
+                                                class: 'button--back',
+                                                hook: 'newsletter-button-close'
+                                            })  }}
+
+                                            {{ button({
+                                                element: 'button',
+                                                type: 'submit',
+                                                label: 'Submit',
+                                                variant: 'red',
+                                                icon: 'chevron-right',
+                                                attr: 'disabled',
+                                                hook: 'newsletter-subscription-cta'
+                                            })  }}
+
+
+                                        </div>
+
+                                        <div class="o-col-12">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form__loader" js-hook-newsletter-loader></div>
+
+                                <div class="newsletter__message newsletter__message--success" role="alert" aria-hidden="true" js-hook-newsletter-message-success>
+                                    <p>Bedankt voor uw aanmelding</p>
+
+                                    {{ button({
+                                        element: 'button',
+                                        type: 'button',
+                                        label: 'Back to form',
+                                        variant: 'ghost',
+                                        icon: 'chevron-left',
+                                        class: 'button--back button--back-to-form',
+                                        hook: 'newsletter-button-close-message',
+                                        attr: 'aria-title="Close success message"'
+                                    })  }}
+                                </div>
+
+                                <div class="newsletter__message newsletter__message--error" role="alert" aria-hidden="true" js-hook-newsletter-message-error>
+                                    <p>Oeps er is iets fout gegaan</p>
+
+                                    {{ button({
+                                        element: 'button',
+                                        type: 'button',
+                                        label: 'Back to form',
+                                        variant: 'ghost',
+                                        icon: 'chevron-left',
+                                        class: 'button--back button--back-to-form',
+                                        hook: 'newsletter-button-close-message',
+                                        attr: 'aria-title="Close error message"'
+                                    })  }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endcall %}
+        {% endcall %}
+
+    </div>
+</div>

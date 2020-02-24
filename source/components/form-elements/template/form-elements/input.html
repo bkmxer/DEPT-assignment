@@ -40,6 +40,7 @@
                 {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}
                 {%- if data.pattern %} pattern="{{ data.pattern }}"{% endif -%}
                 {%- if data.attr %} {{ data.attr|safe }}{% endif -%}>
+            <span class="input__indicator"></span>
             <span class="focus-helper"></span>
         </div>
         {%- if data.error %}

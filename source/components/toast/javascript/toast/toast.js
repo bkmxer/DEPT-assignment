@@ -117,7 +117,7 @@ class Toast {
     toast.el.classList.add(TOAST_VISIBLE_CLASS)
     toast.el.toastIsOpen = true
 
-    // setTimeout(() => Events.$trigger('toast::close', { data: data }), closingTimeOut)
+    setTimeout(() => Events.$trigger('toast::close', { data: data }), closingTimeOut)
   }
 
   /**

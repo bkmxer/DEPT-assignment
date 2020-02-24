@@ -10,23 +10,27 @@
 
 
 ## What does it do
-* lorem ipsum
+* Creates a reusable form validation mechanism
 
 ## Install
+```javascript
+
+import { isValidEmail, isValidName, visuallyEmphasize } from '@utilities/validator';
+
+```
 
 ## How to use
 ### Import cached DOM elements in Javascript.
 ```javascript
 
-// Load all imports
-import * from '@utilities/dom-elements';
+// Checks if input value is a valid email
+isValidEmail(element.value)
 
-// Load only the html element
-import { html } from '@utilities/dom-elements';
+// Checks the input of the firstname or secondname field accross the regex pattern
+isValidName(element.value)
 
-// Load multiple imports
-import { html, body } from '@utilities/dom-elements';
-
+// Visually emphasize if the input element state
+visuallyEmphasize(element, (requiredAndEmpty || invalidEmail || invalidName) ? 'invalid' : 'valid')
 ```
 
 ## Dependencies

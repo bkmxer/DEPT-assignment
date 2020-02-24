@@ -1,0 +1,8 @@
+{
+    "name": "dept-video",
+    "license": "MIT",
+    "repository": "https://bitbucket.org/tamtam-nl/tamtam-frontend-shelf",
+    "dependencies": {
+        "js-cookie": "2.1.4"
+    }
+}
