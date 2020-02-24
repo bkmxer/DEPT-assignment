@@ -1,0 +1,36 @@
+{#
+    Toast macro
+    Usage as a call, inject the toast content there.
+
+    Options:
+        Required
+        id {string|int}          - Adds an id to the toast
+
+        Optional
+        noClose {boolean}        - Hides the close button (esc. key is still bound)
+#}
+
+{% macro toast(data) %}
+
+    <div class="c-toast"
+        {%- if data.id %} id="{{ data.id }}"{% endif -%}
+        js-hook-toast>
+
+        <div class="toast__container">
+
+            <div class="toast__content" role="tooltip">
+
+                {{ caller() }}
+
+            </div>
+            {% if not data.noClose %}
+            <button type="button" class="toast__button-close" js-hook-button-toast-close aria-label="Close toastbox">
+                <span class="symbol">&times;</span>
+                <span class="u-sr-only">Close toast</span>
+            </button>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endmacro %}

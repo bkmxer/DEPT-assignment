@@ -1,0 +1,113 @@
+// @shelf-version 1.1.0
+$toast-max-width: 500px !default;
+$toast-gutter: $global-spacing * 2 !default;
+$toast-gutter-small: $global-spacing * 2 !default;
+$toast-gutter-large: $global-spacing * 6 !default;
+$toast-transition-time: 400ms !default;
+$toast-transition-ease: $ease-in-out-quad !default;
+$toast-min-width-media-query: ($toast-max-width + $toast-gutter-small * 2) - 0.5;
+$toast-close-button-size: 35px;
+
+// Ripples animation for round buttons
+@mixin hoverStyles($color, $growthfield, $size) {
+  &:hover:before {
+    content: '';
+
+  }
+
+  @keyframes hoverStyles {
+    0% {
+      border: 1px solid transparent;
+    }
+
+    100% {
+      border: $growthfield + px solid darken($color, 12%);
+      opacity: 0;
+    }
+  }
+}
+
+.is--toast-open {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}
+
+.is--toast-open.is-touch {
+  body {
+    position: fixed;
+  }
+}
+
+.c-toast {
+  position: fixed;
+  top: auto;
+  bottom: 50px;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 9999;
+  display: flex;
+  pointer-events: none;
+  transition: $toast-transition-time $toast-transition-ease, 0ms linear $toast-transition-time;
+  transition-property: opacity, visibility;
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+}
+
+.toast--is-showing {
+  opacity: 1;
+  pointer-events: all;
+  transition: $toast-transition-time $toast-transition-ease;
+  transition-property: opacity;
+  visibility: visible;
+
+  .toast__content {
+    opacity: 1;
+    transition: $toast-transition-time $toast-transition-ease 100ms,
+      $toast-transition-time $toast-transition-ease;
+    transition-property: transform, opacity;
+  }
+}
+
+.toast__button-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $toast-close-button-size;
+  height: $toast-close-button-size;
+  transform: translateX(50%) translateY(-50%);
+  display: block;
+  background-color: $color-black;
+  color: $color-white;
+  border-radius: 50%;
+  font-size: 2rem;
+  @include hoverStyles(#FEFEFE, 35, 50);
+
+  .symbol {
+    position: relative;
+    bottom: 2px;
+  }
+}
+
+.toast__content {
+  position: relative;
+  z-index: 1;
+  max-width: $toast-max-width;
+  margin: $toast-gutter-small;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  padding: $toast-gutter;
+  background-color: $color-white;
+  transition: $toast-transition-time $toast-transition-ease,
+    $toast-transition-time $toast-transition-ease;
+  transition-property: transform, opacity;
+
+  @include screen-min-width($toast-min-width-media-query) {
+    max-width: calc(#{$toast-max-width} - #{$toast-gutter-small * 2});
+  }
+}

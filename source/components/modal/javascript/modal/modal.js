@@ -2,6 +2,8 @@ import { body, html } from '@utilities/dom-elements'
 import Events from '@utilities/events'
 import ScreenDimensions from '@utilities/screen-dimensions'
 import setTabIndexOfChildren from '@utilities/set-tabindex-of-children'
+import '@components/image'
+import VideoLoader from '@components/video/loader'
 
 const MODAL_HOOK = '[js-hook-modal]'
 const MODAL_CLOSE_HOOK = '[js-hook-button-modal-close]'

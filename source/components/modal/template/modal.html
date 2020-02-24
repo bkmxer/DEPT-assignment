@@ -34,8 +34,9 @@
                 {{ caller() }}
 
                 {% if not data.noClose %}
-                <button type="button" class="modal__button-close" js-hook-button-modal-close aria-label="Close modalbox">
-                    &times;
+                <button type="button" class="modal__button-close" js-hook-video-play js-hook-button-modal-close aria-label="Close modalbox">
+                    <span class="symbol">&times;</span>
+                    <span class="u-sr-only">Close modal</span>
                 </button>
                 {% endif %}
 

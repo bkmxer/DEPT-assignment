@@ -11,7 +11,7 @@ body {
 html {
   font-family: $font-stack-primary;
   font-size: $font-size-root;
-  color: $color-text;
+  color: var(--color-text);
   background-color: $color-white;
   min-height: 100%;
 

@@ -22,14 +22,18 @@ $button-ghost-transition-ease: $button-transition-ease;
   transition-property: color, background-color, box-shadow;
 
   @include hover-focus {
-    color: $button-ghost-font-color-hover;
-    background-color: $button-ghost-background-color-hover;
-    box-shadow: 0 0 0 $button-ghost-border-width $button-ghost-background-color-hover inset;
+    &:not([disabled]) {
+      color: $button-ghost-font-color-hover;
+      background-color: $button-ghost-background-color-hover;
+      box-shadow: 0 0 0 $button-ghost-border-width $button-ghost-background-color-hover inset;
+    }
   }
 
   @include keyboard-focus {
-    background-color: lighten($button-ghost-background-color-hover, 50%);
-    box-shadow: 0 0 0 $button-ghost-border-width lighten($button-ghost-background-color-hover, 50%)
-      inset;
+    &:not([disabled]) {
+      background-color: lighten($button-ghost-background-color-hover, 50%);
+      box-shadow: 0 0 0 $button-ghost-border-width lighten($button-ghost-background-color-hover, 50%)
+        inset;
+    }
   }
 }

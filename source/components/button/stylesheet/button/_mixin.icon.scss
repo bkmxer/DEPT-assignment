@@ -22,8 +22,10 @@ $button-icon-transition-ease: $ease-in-out-quad;
   }
 
   @include hover-focus {
-    .button__icon {
-      transform: translateX($global-spacing/2);
+    &:not([disabled]) {
+      .button__icon {
+        transform: translateX($global-spacing/2);
+      }
     }
   }
 }

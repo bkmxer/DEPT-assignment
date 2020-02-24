@@ -18,16 +18,26 @@ $color-off-white: #ececec;
 
 // Core color settings
 
-$color-background-html: $color-white;
-$color-background-primary: $color-white;
+// $color-background-html: $color-white;
+// $color-background-primary: $color-white;
 
-$color-text-header: $color-grey-dark;
+// var(--color-text)-header: $color-grey-dark;
 $color-text: $color-grey-dark;
 
-$color-divider-line: $color-grey-light;
+// $color-divider-line: $color-grey-light;
 
-$color-form-placeholder: $color-grey;
-$color-form-focus: $color-primary;
+// $color-form-placeholder: $color-grey;
+// $color-form-focus: $color-primary;
+
+
+:root {
+  --color-text: #{$color-grey-dark};
+}
+
+.alt-color-scheme {
+  --color-text: #{invert($color-grey-dark)};
+}
+
 
 // Social color palette
 

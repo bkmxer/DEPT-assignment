@@ -2,9 +2,37 @@
 $modal-max-width: 1600px !default;
 $modal-gutter: $global-spacing * 2 !default;
 $modal-gutter-small: $global-spacing * 2 !default;
+$modal-gutter-large: $global-spacing * 6 !default;
 $modal-transition-time: 400ms !default;
 $modal-transition-ease: $ease-in-out-quad !default;
 $modal-min-width-media-query: ($modal-max-width + $modal-gutter-small * 2) - 0.5;
+$modal-close-button-size: 35px;
+
+// Ripples animation for round buttons
+@mixin ripples($color, $growthfield, $size) {
+  &:hover:before {
+    content: '';
+    width: $size + px;
+    height: $size + px;
+    position: absolute;
+    border-radius: 100%;
+    animation: ripples .4s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  @keyframes ripples {
+    0% {
+      border: 1px solid transparent;
+    }
+
+    100% {
+      border: $growthfield + px solid darken($color, 12%);
+      opacity: 0;
+    }
+  }
+}
 
 .is--modal-open {
   overflow: hidden;
@@ -62,7 +90,20 @@ $modal-min-width-media-query: ($modal-max-width + $modal-gutter-small * 2) - 0.5
   position: absolute;
   top: 0;
   right: 0;
-  background-color: $color-white;
+  width: $modal-close-button-size;
+  height: $modal-close-button-size;
+  transform: translateX(50%) translateY(-50%);
+  display: block;
+  background-color: $color-black;
+  color: $color-white;
+  border-radius: 50%;
+  font-size: 2rem;
+  @include ripples(#FEFEFE, 35, 50);
+
+  .symbol {
+    position: relative;
+    bottom: 2px;
+  }
 }
 
 .modal__container {
@@ -92,7 +133,7 @@ $modal-min-width-media-query: ($modal-max-width + $modal-gutter-small * 2) - 0.5
 
   @include screen-min-width($modal-min-width-media-query) {
     max-width: calc(#{$modal-max-width} - #{$modal-gutter-small * 2});
-    margin: $modal-gutter-small auto;
+    margin: $modal-gutter-large auto;
   }
 }
 

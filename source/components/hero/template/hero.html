@@ -1,5 +1,8 @@
 {% from 'video.html' import video  %}
+{% import 'form-elements.html' as form %}
 {% from 'button.html' import button %}
+{% from 'modal.html' import modal %}
+{% from 'toast.html' import toast %}
 
 <div class="c-hero">
   {{ video({
@@ -79,7 +82,33 @@
       label: 'Subscribe to newsletter',
       url: '#',
       variant: 'secondary',
-      icon: 'chevron-right'
+      icon: 'chevron-right',
+      attr: 'aria-controls="modal-example" aria-label="Open modalbox" js-hook-video-pause'
     } ) }}
+
+    {% call modal({
+        id : 'modal-example',
+        size                : 'string',
+        mobileOnly          : 'false',
+        autoFocus           : 'true',
+        closeAllOthers      : 'true',
+        noBodyClass         : 'false',
+        closeAllOthers      : 'false',
+        keepScrollPosition  : 'false'
+    }) %}
+
+        {% include "subscription.html" %}
+
+    {% endcall %}
+
+    {% call toast({
+        id : 'toast-example',
+        noClose : false
+    }) %}
+
+        TEST
+
+    {% endcall %}
+
   </div>
 </div>
