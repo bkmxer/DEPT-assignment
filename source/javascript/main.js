@@ -41,4 +41,6 @@ VideoLoader.then(([Platforms, Video]) => {
     youtube: Platforms.Youtube,
     vimeo: Platforms.Vimeo,
   })
+
+  Events.$trigger('video::update')
 }).catch(() => { })

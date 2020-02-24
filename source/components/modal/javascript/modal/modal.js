@@ -6,6 +6,7 @@ import '@components/image'
 import VideoLoader from '@components/video/loader'
 
 const MODAL_HOOK = '[js-hook-modal]'
+const VIDEO_HOOK = '[js-hook-video-player]'
 const MODAL_CLOSE_HOOK = '[js-hook-button-modal-close]'
 const MODAL_VISIBLE_CLASS = 'modal--is-showing'
 const MODAL_HTML_CLASS = 'is--modal-open'
@@ -127,6 +128,7 @@ class Modal {
     const noBodyClass = modal.el.dataset.modalNoBodyClass === 'true'
     const closeAllOthers = modal.el.dataset.modalCloseAllOthers === 'true'
     const keepScrollPosition = modal.el.dataset.modalKeepScrollPosition === 'true'
+    const videoWrapper = document.querySelectorAll(VIDEO_HOOK)
 
     // Set scroll position for fixed body on mobile
     if (keepScrollPosition && !ScreenDimensions.isTabletPortraitAndBigger) this.setScrollPosition()
@@ -157,6 +159,12 @@ class Modal {
         autoFocus,
       },
     })
+
+    videoWrapper.forEach(el => {
+      let video = el.querySelector('video')
+      console.log(video)
+      video.pause()
+    })
   }
 
   /**
@@ -165,6 +173,8 @@ class Modal {
    * @param {string} data[].id
    */
   closeModal(data) {
+    const videoWrapper = document.querySelectorAll(VIDEO_HOOK)
+
     // If no ID is given we will close all modals
     if (!data || !data.id) {
       for (const modalIndex of Object.keys(this.registeredModals)) {
@@ -200,6 +210,11 @@ class Modal {
     Events.$trigger('focustrap::deactivate')
 
     Modal.clearCurrentFocus()
+
+    videoWrapper.forEach(el => {
+      let video = el.querySelector('video')
+      video.play()
+    })
   }
 
   /**

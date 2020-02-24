@@ -22,13 +22,13 @@
 }
 
 @mixin h5 {
-  color: $color-primary;
+  color: var(--color-primary);
   font-size: $font-size-h5;
   line-height: $font-line-height-h5;
 }
 
 @mixin h6 {
-  color: $color-primary;
+  color: var(--color-primary);
   font-size: $font-size-h6;
   line-height: $font-line-height-h6;
 }

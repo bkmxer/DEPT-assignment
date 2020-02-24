@@ -16,6 +16,10 @@ $color-grey-light: #808080;
 $color-white: #ffffff;
 $color-off-white: #ececec;
 
+$color-success: #85c385;
+$color-warning: #f3f5b0;
+$color-error: #ffa1a1;
+
 // Core color settings
 
 // $color-background-html: $color-white;
@@ -32,10 +36,34 @@ $color-text: $color-grey-dark;
 
 :root {
   --color-text: #{$color-grey-dark};
+
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-tertiary: #{$color-tertiary};
+
+  --color-black: #{$color-black};
+  --color-grey-dark: #{$color-grey-dark};
+  --color-grey: #{$color-grey};
+  --color-grey-light: #{$color-grey-light};
+
+  --color-white: #{$color-white};
+  --color-off-white: #{$color-off-white};
 }
 
 .alt-color-scheme {
   --color-text: #{invert($color-grey-dark)};
+
+  --color-primary: #{invert($color-primary)};
+  --color-secondary: #{invert($color-secondary)};
+  --color-tertiary: #{invert($color-tertiary)};
+
+  --color-black: #{invert($color-black)};
+  --color-grey-dark: #{invert($color-grey-dark)};
+  --color-grey: #{invert($color-grey)};
+  --color-grey-light: #{invert($color-grey-light)};
+
+  --color-white: #{invert($color-white)};
+  --color-off-white: #{invert($color-off-white)};
 }
 
 

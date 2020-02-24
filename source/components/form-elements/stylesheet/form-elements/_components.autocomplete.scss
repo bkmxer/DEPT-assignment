@@ -2,7 +2,7 @@ $autocomplete-list-border-color: $color-black;
 $autocomplete-list-border-size: 1px;
 $autocomplete-list-fill-color: $color-white;
 $autocomplete-list-item-color: $color-black;
-$autocomplete-list-item-active-color: $color-primary;
+$autocomplete-list-item-active-color: var(--color-primary);
 
 .c-autocomplete {
     position: relative;

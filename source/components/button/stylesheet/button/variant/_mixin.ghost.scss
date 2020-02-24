@@ -11,6 +11,8 @@ $button-ghost-font-color-hover: $color-white;
 $button-ghost-icon-color-hover: $button-ghost-font-color-hover;
 $button-ghost-background-color-hover: $color-black;
 
+$button-red-background-color-hover: #fe4848;
+
 // Transitions
 $button-ghost-transition-time: $button-transition-time;
 $button-ghost-transition-ease: $button-transition-ease;
@@ -33,6 +35,29 @@ $button-ghost-transition-ease: $button-transition-ease;
     &:not([disabled]) {
       background-color: lighten($button-ghost-background-color-hover, 50%);
       box-shadow: 0 0 0 $button-ghost-border-width lighten($button-ghost-background-color-hover, 50%)
+        inset;
+    }
+  }
+}
+
+@mixin button--red {
+  @include button;
+  background: transparent;
+  box-shadow: 0 0 0 $button-ghost-border-width $button-ghost-font-color inset;
+  transition-property: color, background-color, box-shadow;
+
+  @include hover-focus {
+    &:not([disabled]) {
+      color: $button-ghost-font-color-hover;
+      background-color: $button-red-background-color-hover;
+      box-shadow: 0 0 0 $button-ghost-border-width $button-red-background-color-hover inset;
+    }
+  }
+
+  @include keyboard-focus {
+    &:not([disabled]) {
+      background-color: lighten($button-red-background-color-hover, 50%);
+      box-shadow: 0 0 0 $button-ghost-border-width lighten($button-red-background-color-hover, 50%)
         inset;
     }
   }

@@ -1,0 +1,19 @@
+$button-back-spacing: $global-spacing;
+$button-back-icon-spacing: $global-spacing * 4;
+
+@mixin button--back {
+  padding: $button-back-spacing $button-back-spacing * 2;
+  position: absolute;
+  left: $global-spacing;
+
+  &.button--icon {
+    padding-left: $button-back-icon-spacing;
+
+    .button__icon {
+      right: $button-back-spacing * 1.25;
+      order: -1;
+      right: auto;
+      left: 25px;
+    }
+  }
+}

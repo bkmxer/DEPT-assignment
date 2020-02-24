@@ -8,23 +8,60 @@ $toast-transition-ease: $ease-in-out-quad !default;
 $toast-min-width-media-query: ($toast-max-width + $toast-gutter-small * 2) - 0.5;
 $toast-close-button-size: 35px;
 
-// Ripples animation for round buttons
-@mixin hoverStyles($color, $growthfield, $size) {
-  &:hover:before {
-    content: '';
+:root {
+  --toast-bg-color: #{$color-white};
+  --toast-text-color: #{$color-black};
+}
 
-  }
+.toast--success {
+  --toast-bg-color: #{$color-success};
+  --toast-text-color: #{$color-white};
 
-  @keyframes hoverStyles {
-    0% {
-      border: 1px solid transparent;
-    }
-
-    100% {
-      border: $growthfield + px solid darken($color, 12%);
-      opacity: 0;
+  .toast__content {
+    &::before {
+      content: '\2764';
+      font-size: 12px;
     }
   }
+}
+
+.toast--error {
+  --toast-bg-color: #{$color-error};
+  --toast-text-color: #{$color-white};
+
+  .toast__content {
+    &::before {
+      content: '!';
+      font-size: 12px;
+    }
+  }
+}
+
+.toast--warning {
+  --toast-bg-color: #{$color-warning};
+  --toast-text-color: #{$color-black};
+
+  .toast__content {
+    &::before {
+      content: '\26A0';
+      font-size: 12px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes zoomInflyOutUp {
+  from { transform: scale(0) translateX(-50%) translateY(120%) }
+  to { transform: scale(1) translateX(-50%) translateY(0%) }
+}
+
+@keyframes zoomInflyOutDown {
+  from { transform: scale(1) translateX(-50%) translateY(0%) }
+  to { transform: scale(0) translateX(-50%) translateY(120%) }
 }
 
 .is--toast-open {
@@ -44,10 +81,9 @@ $toast-close-button-size: 35px;
 .c-toast {
   position: fixed;
   top: auto;
-  bottom: 50px;
+  bottom: 0px;
   left: 50%;
-  height: 100%;
-  width: 100%;
+  transform: translateX(-50%);
   opacity: 0;
   z-index: 9999;
   display: flex;
@@ -56,6 +92,7 @@ $toast-close-button-size: 35px;
   transition-property: opacity, visibility;
   -webkit-overflow-scrolling: touch;
   visibility: hidden;
+  animation: zoomInflyOutDown 1s;
 }
 
 .toast--is-showing {
@@ -64,6 +101,7 @@ $toast-close-button-size: 35px;
   transition: $toast-transition-time $toast-transition-ease;
   transition-property: opacity;
   visibility: visible;
+  animation: fadeIn 2s, zoomInflyOutUp 1s;
 
   .toast__content {
     opacity: 1;
@@ -76,16 +114,13 @@ $toast-close-button-size: 35px;
 .toast__button-close {
   position: absolute;
   top: 0;
-  right: 0;
-  width: $toast-close-button-size;
-  height: $toast-close-button-size;
-  transform: translateX(50%) translateY(-50%);
+  right: 5px;
+  width: 10px;
+  height: 10px;
   display: block;
-  background-color: $color-black;
-  color: $color-white;
-  border-radius: 50%;
-  font-size: 2rem;
-  @include hoverStyles(#FEFEFE, 35, 50);
+  color: var(--toast-text-color);
+  font-size: 1.5rem;
+  z-index: 1;
 
   .symbol {
     position: relative;
@@ -97,17 +132,37 @@ $toast-close-button-size: 35px;
   position: relative;
   z-index: 1;
   max-width: $toast-max-width;
-  margin: $toast-gutter-small;
+  margin-bottom: $toast-gutter-small;
   width: auto;
   height: auto;
+  min-width: 180px;
   opacity: 0;
-  padding: $toast-gutter;
-  background-color: $color-white;
+  padding: $global-spacing $toast-gutter-small;
+  padding-left: calc(#{$toast-gutter} * 2);
+  background-color: var(--(toast-bg-color));
+  color: var(--toast-text-color);
   transition: $toast-transition-time $toast-transition-ease,
-    $toast-transition-time $toast-transition-ease;
+  $toast-transition-time $toast-transition-ease;
   transition-property: transform, opacity;
 
   @include screen-min-width($toast-min-width-media-query) {
     max-width: calc(#{$toast-max-width} - #{$toast-gutter-small * 2});
+  }
+
+  &::before {
+    content: 'i';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--toast-text-color);
+    color: var(--toast-bg-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
   }
 }

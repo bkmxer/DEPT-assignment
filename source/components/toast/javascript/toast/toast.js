@@ -97,16 +97,10 @@ class Toast {
    * possible types: info, warning, error, success
    */
   openToast(data) {
-    console.log("open TOAST");
+    const closingTimeOut = 7000
     const toast = this.registeredToasts[`toast-${data.id}`]
     const toasttype = data.type ? data.type : 'info'
     const toastlabel = data.label ? data.label : 'Information'
-
-    console.log("toast: ", toast);
-    console.log("toasttype: ", toasttype);
-    console.log("toastlabel: ", toastlabel);
-
-    console.log('open Toast', this.registeredToasts)
 
     if (!toast || toast.el.toastIsOpen) return
 
@@ -122,6 +116,8 @@ class Toast {
     toast.el.tabIndex = 0
     toast.el.classList.add(TOAST_VISIBLE_CLASS)
     toast.el.toastIsOpen = true
+
+    // setTimeout(() => Events.$trigger('toast::close', { data: data }), closingTimeOut)
   }
 
   /**
@@ -150,8 +146,6 @@ class Toast {
     toast.el.tabIndex = -1
     toast.el.classList.remove(TOAST_VISIBLE_CLASS)
     toast.el.toastIsOpen = false
-
-    Toast.clearCurrentFocus()
   }
 }
 

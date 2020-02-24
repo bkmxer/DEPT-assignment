@@ -2,6 +2,7 @@
 @import 'button/mixin.icon';
 @import 'button/size/mixin.small';
 @import 'button/size/mixin.large';
+@import 'button/size/mixin.back';
 @import 'button/variant/mixin.ghost';
 @import 'button/variant/mixin.primary';
 @import 'button/variant/mixin.secondary';
@@ -25,6 +26,10 @@
   @include button--ghost;
 }
 
+.c-button--red {
+  @include button--red;
+}
+
 /**
 * Button icon modifier
 */
@@ -41,4 +46,8 @@
 
 .button--large {
   @include button--large;
+}
+
+.button--back {
+  @include button--back;
 }

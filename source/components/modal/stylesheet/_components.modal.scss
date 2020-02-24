@@ -7,6 +7,7 @@ $modal-transition-time: 400ms !default;
 $modal-transition-ease: $ease-in-out-quad !default;
 $modal-min-width-media-query: ($modal-max-width + $modal-gutter-small * 2) - 0.5;
 $modal-close-button-size: 35px;
+$modal-max-width: 700px;
 
 // Ripples animation for round buttons
 @mixin ripples($color, $growthfield, $size) {
@@ -75,14 +76,30 @@ $modal-close-button-size: 35px;
   .modal__content {
     opacity: 1;
     transition: $modal-transition-time $modal-transition-ease 100ms,
-      $modal-transition-time $modal-transition-ease;
+    $modal-transition-time $modal-transition-ease;
     transition-property: transform, opacity;
+    max-width: 90%;
+
+    @include screen-min-width($modal-min-width-media-query) {
+      max-width: calc(#{$modal-max-width} - #{$modal-gutter-small * 2});
+      margin: $modal-gutter-large auto;
+    }
   }
 
   .modal__background {
     left: 0;
     transition: $modal-transition-time $modal-transition-ease, 0ms;
     transition-property: opacity, left;
+  }
+}
+
+.modal-size--sm {
+  .modal__content {
+    max-width: 90%;
+
+    @include screen-tablet-portrait-and-bigger {
+      max-width: $modal-max-width;
+    }
   }
 }
 
@@ -121,14 +138,14 @@ $modal-close-button-size: 35px;
   position: relative;
   z-index: 1;
   max-width: $modal-max-width;
-  margin: $modal-gutter-small;
+  margin: $modal-gutter-small auto;
   width: auto;
   height: auto;
   opacity: 0;
   padding: $modal-gutter;
-  background-color: $color-white;
+  background-color: $color-off-white;
   transition: $modal-transition-time $modal-transition-ease,
-    $modal-transition-time $modal-transition-ease;
+  $modal-transition-time $modal-transition-ease;
   transition-property: transform, opacity;
 
   @include screen-min-width($modal-min-width-media-query) {
