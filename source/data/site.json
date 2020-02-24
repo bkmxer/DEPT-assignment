@@ -16,14 +16,14 @@
   ],
   "preload": [
     {
-      "url": "/assets/css/main.css",
+      "url": "./assets/css/main.css",
       "as": "style",
       "onload": "onload=\"this.onload=null;this.rel='stylesheet'\""
     }
   ],
   "modulepreload": [
     {
-      "url": "/assets/js/main-es.js",
+      "url": "./assets/js/main-es.js",
       "as": "script"
     }
   ]

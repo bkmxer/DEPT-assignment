@@ -162,7 +162,6 @@ class Modal {
 
     videoWrapper.forEach(el => {
       let video = el.querySelector('video')
-      console.log(video)
       video.pause()
     })
   }

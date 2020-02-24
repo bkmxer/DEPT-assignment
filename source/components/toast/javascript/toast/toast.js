@@ -36,10 +36,8 @@ class Toast {
    */
   setupToastsRegistry(el) {
     if (el._toastIsInitialised) return
-    console.log('setup toasts registry', el)
 
     const id = el.getAttribute('id')
-
     const closeBtn = [...el.querySelectorAll(TOAST_CLOSE_HOOK)]
 
     const toast = {
@@ -51,7 +49,6 @@ class Toast {
     this.registeredToasts[`toast-${id}`] = toast
 
     this.bindToastEvents(toast)
-    console.log('setup toasts registry', el)
     el._toastIsInitialised = true
   }
 

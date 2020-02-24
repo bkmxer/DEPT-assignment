@@ -60,6 +60,12 @@
     font-size: 2rem;
   }
 
+  > a {
+    @include keyboard-focus {
+      outline: 1px dashed $color-primary;
+    }
+  }
+
   ~ .footer__menu-item {
     margin-top: $global-spacing-xs / 2;
 
@@ -85,6 +91,10 @@
 
 .footer__social-icon {
   color: $color-white;
+
+  @include keyboard-focus {
+    outline: 1px dashed $color-primary;
+  }
 
   ~ .footer__social-icon {
     margin-left: $global-spacing;
